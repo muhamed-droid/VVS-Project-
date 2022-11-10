@@ -6,7 +6,7 @@ namespace VVSZadaca1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Selma <3!");
+            Osoba muhamed = new Osoba("Muhamed", "Masnopita", new Adresa("ka", "la", 21, "bb"), new DateTime(2001, 8, 15), "165T24", 12345);
         }
     }
 }
