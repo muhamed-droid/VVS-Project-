@@ -30,12 +30,25 @@ namespace VVSZadaca1
             //pitanje je da li ćemo ga ovako generisat jer je glupo što ako je mjesec osmi pokupit će 8/
             //Možda da od godine kupimo
             this.jedinstveniIdentifikacioniKod = ime.Substring(0, 2) + prezime.Substring(0, 2) + adresa.ToString().Substring(0,2) + datumRodjenja.Year.ToString().Substring(2, 2) + brojLicneKarte.Substring(0,2) + jmbg.ToString().Substring(0,2);
-            Console.WriteLine(jedinstveniIdentifikacioniKod);
+           
+        }
+
+        public string getIme()
+        {
+            return ime;
+        }
+        public string getPrezime()
+        {
+            return prezime;
+        }
+        public int getJmbg()
+        {
+            return jmbg;
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            return jedinstveniIdentifikacioniKod;
         }
 
         public String getJedinstveniIdentifikacioniKod()
