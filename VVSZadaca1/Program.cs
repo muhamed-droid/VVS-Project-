@@ -83,6 +83,7 @@ namespace VVSZadaca1
                     try
                     {
                         Osoba o = r.identifikacijaGlasaca(ime, prezime, jmbg);
+                        Console.WriteLine("Vas identifikacijski broj glasi: "+o);
                         r.unesiGlas();
                         Console.WriteLine("Izaberite stranku ili nezavisnog kandidata!");
 

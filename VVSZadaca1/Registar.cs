@@ -39,8 +39,8 @@ namespace VVSZadaca1
         }
         public Osoba identifikacijaGlasaca(string ime, string prezime, int jmbg)
         {
-            glasaci.First(item => item.getIme().ToLower().Equals(ime.ToLower()) && item.getPrezime().ToLower().Equals(prezime.ToLower(), StringComparison.Ordinal) && item.getJmbg().Equals(jmbg) );
-            return null;
+            return glasaci.First(item => item.getIme().ToLower().Equals(ime.ToLower()) && item.getPrezime().ToLower().Equals(prezime.ToLower(), StringComparison.Ordinal) && item.getJmbg().Equals(jmbg) );
+            
         }
         public void unesiGlas()
         {
