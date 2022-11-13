@@ -24,7 +24,10 @@ namespace VVSZadaca1
         {
             return brojGlasova;
         }
-
+        public List<Osoba> getKandidati()
+        {
+            return kandidati;
+        }
         public void dodajGlas()
         {
             brojGlasova++;

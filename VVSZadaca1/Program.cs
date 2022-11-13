@@ -31,7 +31,13 @@ namespace VVSZadaca1
             Osoba borjana = new Kandidat("Borjana", "Kristo", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T29", 99908);
             Osoba zlatko = new Kandidat("Zlatko", "Lagumdzija", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T30", 99909);
             Osoba irfan = new Kandidat("Irfan", "Cengic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T31", 99910);
-            
+
+
+            Console.WriteLine("unesi ime:");
+            string userName = Console.ReadLine();
+            Osoba nova= new Osoba(userName, "selma",new Adresa("a","b",1,"c"), new DateTime(1, 2, 3), "", 1);
+            sda.dodajKandidata(nova);
+            Console.WriteLine(sda.getKandidati());  
         }
     }
 }
