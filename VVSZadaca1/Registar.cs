@@ -47,5 +47,10 @@ namespace VVSZadaca1
             brojGlasaca++;
         }
 
+        public int getBrojGlasaca()
+        {
+            return brojGlasaca;
+        }
+
     }
 }

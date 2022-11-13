@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VVSZadaca1
 {
@@ -129,9 +130,59 @@ namespace VVSZadaca1
                                         r.getGlasaci().ForEach(g => Console.WriteLine(g));
                                         break;
                                     case 3:
-                                        /*muhamedov dio*/
-
-                                        break;
+                                    Console.WriteLine("Odaberite jednu od ponuđenih opcija: ");
+                                    Console.WriteLine("1. ukupna izlaznost. ");
+                                    Console.WriteLine("2. stranke koje su prešle cenzus. ");
+                                    Console.WriteLine("3. kandidati koji su prešli cenzus. ");
+                                    int broj = Convert.ToInt32(Console.ReadLine());
+                                    if(broj==1)
+                                    {
+                                        double izlaznost = (double)r.getBrojGlasaca() / (double) r.getGlasaci().Count;
+                                        Console.WriteLine("Trenutna izlaznost je: " + r.getBrojGlasaca() + " osoba, odnosno to je: " + izlaznost*100 + "%");
+                                    }
+                                    else if (broj == 2)
+                                    {
+                                        List<Stranka> strankeKojeSuProlseCenzus = new List<Stranka>();
+                                        foreach (Stranka s in r.getStranke())
+                                        {
+                                            if (s.getBrojGlasova() >= 0.02*r.getBrojGlasaca())
+                                            {
+                                                strankeKojeSuProlseCenzus.Add(s);
+                                            }
+                                        }
+                                        Console.WriteLine("Stranke koje su prešle cenzus su: ");
+                                        foreach(Stranka s in strankeKojeSuProlseCenzus)
+                                        {
+                                            Console.Write(s + ", ");
+                                        }
+                                    }
+                                    else if (broj == 3)
+                                    {
+                                        List<Kandidat> kandidatiKojiSuOsvojiliMandat = new List<Kandidat>();
+                                        foreach(Kandidat k in r.getNezavisnikandidati())
+                                        {
+                                            if(k.getBrojGlasova() >= 0.02 * r.getBrojGlasaca())
+                                            {
+                                                kandidatiKojiSuOsvojiliMandat.Add(k);
+                                            }
+                                        }
+                                        List<Stranka> listaStranki = r.getStranke();
+                                        foreach(Stranka s in listaStranki)
+                                        {
+                                            foreach(Kandidat k in s.getKandidati())
+                                            {
+                                                if (k.getBrojGlasova() >= 0.2 * s.getBrojGlasova())
+                                                {
+                                                    kandidatiKojiSuOsvojiliMandat.Add(k);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Odabrali ste nepostojeću opciju!");
+                                    }
+                                    break;
 
 
                                 }
