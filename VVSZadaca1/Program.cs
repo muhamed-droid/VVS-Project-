@@ -8,7 +8,6 @@ namespace VVSZadaca1
       
         static void setUp(Registar r)
         {
-        
             Osoba glasac1 = new Osoba("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T24", 12345);
             Osoba glasac2 = new Osoba("Adna", "Mehanovic", new Adresa("Vogosca", "ulica1", 71000, "bb"), new DateTime(2000, 5, 21), "131T29", 12346);
             Osoba glasac3 = new Osoba("Esma", "Zejnilovic", new Adresa("Brcko", "ulica2", 71365, "bb"), new DateTime(2007, 11, 15), "6ZT182", 12347);
@@ -59,11 +58,11 @@ namespace VVSZadaca1
             r.dodajKandidata(irfan);
             r.dodajKandidata(borjana);
         }
+
         static void Main(string[] args)
         {
             Registar r = new Registar();
             setUp(r);
-
 
             for(;;)
             {
@@ -176,7 +175,6 @@ namespace VVSZadaca1
                         int password = Convert.ToInt32(Console.ReadLine());
                         if (password == 123)
                         {
-                            
                                 Console.WriteLine("Izaberite opciju!");
                                 Console.WriteLine("0 izlaz");
                                 Console.WriteLine("1. Unos glasaca");
@@ -261,18 +259,6 @@ namespace VVSZadaca1
                 else
                     Console.WriteLine("Ulaz nije validan! Ne postoji ta opcija");
             }
-
-
-            //Console.WriteLine("unesi ime:");
-            //  string userName = Console.ReadLine();
-            /// Osoba nova = new Osoba(userName, "Kost", new Adresa("Sarajevo", "ulica4", 71000, "bb"), new DateTime(2000, 1, 31), "200T12", 12349);
-            //sda.dodajKandidata(nova);
-            //    sda.getKandidati().ForEach(o => Console.WriteLine(o));
-            //  Console.WriteLine(sda.getKandidati().Count);
-            
-            
         }
-
-        
     }
 }

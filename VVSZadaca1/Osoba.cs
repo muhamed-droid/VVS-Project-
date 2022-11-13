@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
-    //Osoba je po defaultu glasač, ali će se prilikom glasanja osobi provjeravati starost
-    //Za sve ispod 18 neće imati pravo glasa
+    //Osoba je po defaultu glasač
     internal class Osoba
     {
         private String ime, prezime;
@@ -19,7 +18,7 @@ namespace VVSZadaca1
         private String jedinstveniIdentifikacioniKod;
         private bool datGlas = false; 
 
-        //konstruktor za Osobu, jedinstveniIdentifikacioniKod se automatski generise
+        //konstruktor za Osobu
         public Osoba(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, long jmbg)
         {
             this.ime = ime;

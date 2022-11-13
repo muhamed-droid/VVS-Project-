@@ -41,7 +41,7 @@ namespace VVSZadaca1
             brojGlasova++;
         }
 
-        //stranka ima svoju liistu kandidata, ovako stranka dodaje kandidata na listu
+        //stranka ima svoju listu kandidata, ovako stranka dodaje kandidata na listu
         public void dodajKandidata(Kandidat kandidat)
         {
             kandidati.Add(kandidat);   
