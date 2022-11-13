@@ -108,26 +108,33 @@ namespace VVSZadaca1
                         int password = Convert.ToInt32(Console.ReadLine());
                         if (password == 123)
                         {
-                            Console.WriteLine("Izaberite opciju!");
-                            Console.WriteLine("1. Unos glasaca");
-                            Console.WriteLine("2. Pregled svih glasaca");
-                            Console.WriteLine("3. Pregled statistike");
-                            int inputAdmina = Convert.ToInt32(Console.ReadLine());
+                            
+                                Console.WriteLine("Izaberite opciju!");
+                                Console.WriteLine("0 izlaz");
+                                Console.WriteLine("1. Unos glasaca");
+                                Console.WriteLine("2. Pregled svih glasaca");
+                                Console.WriteLine("3. Pregled statistike");
+                                int inputAdmina = Convert.ToInt32(Console.ReadLine());
 
-                            switch (inputAdmina)
-                            {
-                                case 1:
-                                    Console.WriteLine("Unesi ime!");
-                                    Console.WriteLine("Unesi prezime");    
-                                    break;
+                                switch (inputAdmina)
+                                {
+                                    
+                                        
+                                    case 1:
+                                        Console.WriteLine("Unesi ime!");
+                                        Console.WriteLine("Unesi prezime");
+                                        break;
                                     case 2:
-                                    r.getGlasaci().ForEach(g => Console.WriteLine(g));
-                                    break;
+                                        r.getGlasaci().ForEach(g => Console.WriteLine(g));
+                                        break;
                                     case 3:
-                                    /*muhamedov dio*/
+                                        /*muhamedov dio*/
 
-                                    break;
-                            }
+                                        break;
+
+
+                                }
+                            break;
 
 
                         }
