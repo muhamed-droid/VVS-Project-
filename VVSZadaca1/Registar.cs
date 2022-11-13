@@ -37,7 +37,7 @@ namespace VVSZadaca1
         {
             stranke.Add(s);
         }
-        public Osoba identifikacijaGlasaca(string ime, string prezime, int jmbg)
+        public Osoba identifikacijaGlasaca(string ime, string prezime, long jmbg)
         {
             return glasaci.First(item => item.getIme().ToLower().Equals(ime.ToLower()) && item.getPrezime().ToLower().Equals(prezime.ToLower(), StringComparison.Ordinal) && item.getJmbg().Equals(jmbg) );
             

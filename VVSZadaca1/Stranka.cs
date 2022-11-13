@@ -10,21 +10,29 @@ namespace VVSZadaca1
     {
         private String identifikacionaSkracenica, puniNaziv;
         private int brojGlasova;
-        private List<Osoba> kandidati;
+        private List<Kandidat> kandidati;
 
         public Stranka(string identifikacionaSkracenica, string puniNaziv)
         {
             this.identifikacionaSkracenica = identifikacionaSkracenica;
             this.puniNaziv = puniNaziv;
-            this.kandidati = new List<Osoba>();
+            this.kandidati = new List<Kandidat>();
             this.brojGlasova = 0;
         }
 
+        public String getIdentifikacionaSkracenica()
+        {
+            return identifikacionaSkracenica;
+        }
+        public String getPuniNaziv()
+        {
+            return puniNaziv;
+        }
         public int getBrojGlasova()
         {
             return brojGlasova;
         }
-        public List<Osoba> getKandidati()
+        public List<Kandidat> getKandidati()
         {
             return kandidati;
         }
@@ -34,14 +42,14 @@ namespace VVSZadaca1
         }
 
         //stranka ima svoju liistu kandidata, ovako stranka dodaje kandidata na listu
-        public void dodajKandidata(Osoba osoba)
+        public void dodajKandidata(Kandidat kandidat)
         {
-            kandidati.Add(osoba);   
+            kandidati.Add(kandidat);   
         }
 
-        public void izbaciKandidata(Osoba osoba)
+        public void izbaciKandidata(Kandidat kandidat)
         {
-            kandidati.Remove(osoba);
+            kandidati.Remove(kandidat);
         }
 
     }

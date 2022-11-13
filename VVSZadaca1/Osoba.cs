@@ -15,11 +15,12 @@ namespace VVSZadaca1
         private Adresa adresa;
         private DateTime datumRodjenja;
         private String brojLicneKarte;
-        private int jmbg;
+        private long jmbg;
         private String jedinstveniIdentifikacioniKod;
+        private bool datGlas = false; 
 
         //konstruktor za Osobu, jedinstveniIdentifikacioniKod se automatski generise
-        public Osoba(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, int jmbg)
+        public Osoba(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, long jmbg)
         {
             this.ime = ime;
             this.prezime = prezime;
@@ -41,9 +42,17 @@ namespace VVSZadaca1
         {
             return prezime;
         }
-        public int getJmbg()
+        public long getJmbg()
         {
             return jmbg;
+        }
+        public bool getDatGlas()
+        {
+            return datGlas;
+        }
+        public void setDatGlas()
+        {
+            this.datGlas = true;
         }
 
         public override string ToString()
@@ -98,22 +107,12 @@ namespace VVSZadaca1
         //dodaje glas svim kandidatima koji su u listi, naravno ako pripadaju istoj stranci.
         public void glasaj(List<Kandidat> kandidati) 
         {
+            if (kandidati.Count == 0) return;
             if (!daLiJeListicValidan(kandidati)) return;
-            //dodaje se glas stranci iz koje je kandidat zaokruzen
-            kandidati.ElementAt(0).getStranka().dodajGlas();
             foreach(Kandidat k in kandidati){
                 k.dodajGlas();
             }
           
         }
-
-
-        public void glasaj(Stranka stranka, List<Kandidat> kandidati)
-        {
-            glasaj(stranka);
-            glasaj(kandidati);
-        }
-
-
     }
 }

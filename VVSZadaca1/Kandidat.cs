@@ -8,12 +8,6 @@ namespace VVSZadaca1
 {
     internal class Kandidat : Osoba
     {
-        private String ime, prezime;
-        private Adresa adresa;
-        private DateTime datumRodjenja;
-        private String brojLicneKarte;
-        private int jmbg;
-        private String jedinstveniIdentifikacioniKod;
         private Stranka stranka;
         int brojGlasova;
 

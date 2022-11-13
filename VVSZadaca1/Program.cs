@@ -65,8 +65,7 @@ namespace VVSZadaca1
             setUp(r);
 
 
-            for(; ; )
-
+            for(;;)
             {
                 Console.WriteLine("Da li zelite glasati(1), uvid u podatke(2), izlaz iz apikacija(0)?");
                 int input=Convert.ToInt32(Console.ReadLine());
@@ -79,32 +78,99 @@ namespace VVSZadaca1
                     Console.WriteLine("Unesite prezime:");
                     string prezime = Console.ReadLine();
                     Console.WriteLine("Unesite jmbg:");
-                    int jmbg = Convert.ToInt32(Console.ReadLine());
+                    long jmbg = Convert.ToInt32(Console.ReadLine());
 
                     try
                     {
                         Osoba o = r.identifikacijaGlasaca(ime, prezime, jmbg);
-                        Console.WriteLine("Vas identifikacijski broj glasi: "+o);
-                        r.unesiGlas();
-                        Console.WriteLine("Izaberite stranku ili nezavisnog kandidata!");
-
-                        /*esmin dio*/
-
-
+                        if(o.getDatGlas())
+                        {
+                            Console.WriteLine("Već ste glasali!");
+                            return;
+                        }
+                        Console.WriteLine("Vas identifikacijski broj glasi: " + o);
+                        Console.WriteLine("Da li zelite glasati za stranku(1) ili za nezavisnog kandidata(2)?");
+                        int inputGlasaca = Convert.ToInt32(Console.ReadLine());
+                        if (inputGlasaca == 1)
+                        {
+                            int i = 0;
+                            foreach(Stranka str in r.getStranke())
+                            {
+                                i++;
+                                Console.WriteLine(i + ". " + str.getIdentifikacionaSkracenica() + " - " + str.getPuniNaziv());
+                            }
+                            Console.WriteLine("Unesite identifikacionu skracenicu stranke za koju zelite glasati");
+                            string inputStranke = Console.ReadLine().ToUpper();
+                            Stranka stranka = r.getStranke().Find(s => s.getIdentifikacionaSkracenica().Equals(inputStranke));
+                            if(stranka == null)
+                            {
+                                Console.WriteLine("Ta stranka ne postoji!");
+                            }
+                            else
+                            {
+                                r.unesiGlas();
+                                r.dodajGlasaca(o);
+                                o.glasaj(stranka);
+                                Console.WriteLine("Unesite imena i prezimena kandidata stranke za koje zelite glasati (svaki kandidat u novi red) ili 0 ukoliko ne zelite glasati ili ste zavrsili sa odabirom kandidata");
+                                int j = 0;
+                                foreach (Kandidat kandidat in stranka.getKandidati())
+                                {
+                                    j++;
+                                    Console.WriteLine(j + ". " + kandidat.getIme() + " " + kandidat.getPrezime());
+                                }
+                                List<Kandidat> kandidati = new List<Kandidat>();
+                                for(;;)
+                                {
+                                    string inputKandidata = Console.ReadLine().ToUpper();
+                                    if (inputKandidata == "0")
+                                        break;
+                                    Kandidat kandidat = stranka.getKandidati().Find(k => (k.getIme() + " " + k.getPrezime()).ToUpper().Equals(inputKandidata));
+                                    if (kandidat == null)
+                                        Console.WriteLine("Kandidat ne postoji!");
+                                    else
+                                        kandidati.Add(kandidat);
+                                }
+                                o.glasaj(kandidati);
+                                Console.WriteLine("Uspješno ste glasali. Hvala!");
+                                return;
+                            }
+                        }
+                        else if (inputGlasaca == 2)
+                        {
+                            int i = 0;
+                            foreach (Kandidat kandidat in r.getNezavisnikandidati())
+                            {
+                                i++;
+                                Console.WriteLine(i + ". " + kandidat.getIme() + " " + kandidat.getPrezime());
+                            }
+                            Console.WriteLine("Unesite ime i prezime nezavisnog kandidata za kojeg zelite glasati");
+                            string inputNezavisnogKandidata = Console.ReadLine().ToUpper();
+                            Kandidat nezavisniKandidat = r.getNezavisnikandidati().Find(k => (k.getIme()+" "+k.getPrezime()).ToUpper().Equals(inputNezavisnogKandidata));
+                            if (nezavisniKandidat == null)
+                            {
+                                Console.WriteLine("Taj nezavisni kandidat ne postoji!");
+                            }
+                            else
+                            {
+                                o.glasaj(new List<Kandidat>() { nezavisniKandidat });
+                                r.unesiGlas();
+                                r.dodajGlasaca(o);
+                                Console.WriteLine("Uspješno ste glasali. Hvala!");
+                                return;
+                            }
+                        }
+                        else
+                            Console.WriteLine("Ulaz nije validan! Ne postoji ta opcija");
                     }
                     catch (Exception)
                     {
                         Console.WriteLine("Niste na glasackom spisku!");
 
                     }
-
-
-
-
                 }
                 else if (input == 2)
                 {
-                    for (; ; )
+                    for (;;)
                     {
                         Console.WriteLine("Unesite password za admina ili 0 za izlaz:");
                         int password = Convert.ToInt32(Console.ReadLine());
@@ -120,8 +186,6 @@ namespace VVSZadaca1
 
                                 switch (inputAdmina)
                                 {
-                                    
-                                        
                                     case 1:
                                         Console.WriteLine("Unesi ime!");
                                         Console.WriteLine("Unesi prezime");
@@ -183,28 +247,20 @@ namespace VVSZadaca1
                                         Console.WriteLine("Odabrali ste nepostojeću opciju!");
                                     }
                                     break;
-
-
                                 }
                             break;
-
-
                         }
                         else if (password == 0)
                             break;
                         else
                             Console.WriteLine("Napravili ste gresku. Unesite ponovo ili kliknite 0 za izlaz.");
-
                     }
                 }
-
-
                 else if (input == 0)
                     return;
                 else
-                    Console.WriteLine("Ulaz nije validan!Ne postoji ta opcija");
-
-                }
+                    Console.WriteLine("Ulaz nije validan! Ne postoji ta opcija");
+            }
 
 
             //Console.WriteLine("unesi ime:");
