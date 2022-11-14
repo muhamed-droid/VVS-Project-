@@ -113,7 +113,7 @@ namespace VVSZadaca1
                         if(o.getDatGlas())
                         {
                             Console.WriteLine("Već ste glasali!");
-                            return;
+                            
                         }
                         Console.WriteLine("Vas identifikacijski broj glasi: " + o);
                         o.setDatGlas();
@@ -159,7 +159,7 @@ namespace VVSZadaca1
                                 }
                                 o.glasaj(kandidati);
                                 Console.WriteLine("Uspješno ste glasali. Hvala!");
-                                return;
+                                
                             }
                         }
                         else if (inputGlasaca == 2)
@@ -183,7 +183,7 @@ namespace VVSZadaca1
                                 r.unesiGlas();
     
                                 Console.WriteLine("Uspješno ste glasali. Hvala!");
-                                return;
+                               
                             }
                         }
                         else
