@@ -6,6 +6,8 @@ namespace VVSZadaca1
     internal class Program
     {
       
+
+
         static void setUp(Registar r)
         {
             Osoba glasac1 = new Osoba("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T24", 12345);
@@ -58,7 +60,33 @@ namespace VVSZadaca1
             r.dodajKandidata(irfan);
             r.dodajKandidata(borjana);
         }
+        static void unosGlasaca(Registar r)
+        {
+            Console.WriteLine("Unesite ime:");
+            string ime = Console.ReadLine();
+            Console.WriteLine("Unesite prezime:");
+            string prezime=Console.ReadLine();
+            Console.WriteLine("Unesite jmbg:");
+            int jmbg = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Unesite grad:");
+            string grad = Console.ReadLine();
+            Console.WriteLine("Unesite postanski broj:");
+            int postanskiBroj = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Unesite naziv ulice:");
+            string ulica = Console.ReadLine();
+            Console.WriteLine("Unesite broj:");
+            string broj = Console.ReadLine();
+            Console.WriteLine("Unesite broj licne karte:");
+            string licna=Console.ReadLine();
+            Console.WriteLine("Unesite godinu rodjenja:");
+            int godina = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Unesite mjesec rodjenja:");
+            int mjesec = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Unesite dan rodjenja:");
+            int dan = Convert.ToInt32(Console.ReadLine());
+            r.dodajGlasaca(new Osoba(ime, prezime, new Adresa(grad,ulica,postanskiBroj,broj), new DateTime(godina, mjesec, dan), licna, jmbg));
 
+        }
         static void Main(string[] args)
         {
             Registar r = new Registar();
@@ -108,7 +136,6 @@ namespace VVSZadaca1
                             else
                             {
                                 r.unesiGlas();
-                                r.dodajGlasaca(o);
                                 o.glasaj(stranka);
                                 Console.WriteLine("Unesite imena i prezimena kandidata stranke za koje zelite glasati (svaki kandidat u novi red) ili 0 ukoliko ne zelite glasati ili ste zavrsili sa odabirom kandidata");
                                 int j = 0;
@@ -153,7 +180,7 @@ namespace VVSZadaca1
                             {
                                 o.glasaj(new List<Kandidat>() { nezavisniKandidat });
                                 r.unesiGlas();
-                                r.dodajGlasaca(o);
+    
                                 Console.WriteLine("Uspješno ste glasali. Hvala!");
                                 return;
                             }
@@ -185,8 +212,7 @@ namespace VVSZadaca1
                                 switch (inputAdmina)
                                 {
                                     case 1:
-                                        Console.WriteLine("Unesi ime!");
-                                        Console.WriteLine("Unesi prezime");
+                                    unosGlasaca(r);
                                         break;
                                     case 2:
                                         r.getGlasaci().ForEach(g => Console.WriteLine(g));
