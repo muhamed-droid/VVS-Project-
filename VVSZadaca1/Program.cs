@@ -113,10 +113,8 @@ namespace VVSZadaca1
                         if(o.getDatGlas())
                         {
                             Console.WriteLine("Već ste glasali!");
-                            
                         }
                         Console.WriteLine("Vas identifikacijski broj glasi: " + o);
-                        o.setDatGlas();
                         Console.WriteLine("Da li zelite glasati za stranku(1) ili za nezavisnog kandidata(2)?");
                         int inputGlasaca = Convert.ToInt32(Console.ReadLine());
                         if (inputGlasaca == 1)
@@ -138,6 +136,7 @@ namespace VVSZadaca1
                             {
                                 r.unesiGlas();
                                 o.glasaj(stranka);
+                                o.setDatGlas();
                                 Console.WriteLine("Unesite imena i prezimena kandidata stranke za koje zelite glasati (svaki kandidat u novi red) ili 0 ukoliko ne zelite glasati ili ste zavrsili sa odabirom kandidata");
                                 int j = 0;
                                 foreach (Kandidat kandidat in stranka.getKandidati())
@@ -181,9 +180,8 @@ namespace VVSZadaca1
                             {
                                 o.glasaj(new List<Kandidat>() { nezavisniKandidat });
                                 r.unesiGlas();
-    
+                                o.setDatGlas();
                                 Console.WriteLine("Uspješno ste glasali. Hvala!");
-                               
                             }
                         }
                         else
