@@ -116,6 +116,7 @@ namespace VVSZadaca1
                             return;
                         }
                         Console.WriteLine("Vas identifikacijski broj glasi: " + o);
+                        o.setDatGlas();
                         Console.WriteLine("Da li zelite glasati za stranku(1) ili za nezavisnog kandidata(2)?");
                         int inputGlasaca = Convert.ToInt32(Console.ReadLine());
                         if (inputGlasaca == 1)
