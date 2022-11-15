@@ -10,7 +10,7 @@ namespace VVSZadaca1
     {
         private Stranka stranka;
         int brojGlasova;
-        Boolean osvojenMandat=false;
+        Boolean mandat=false;
 
         //po defaultu se kreira nezavisni kandidat u kojem je stranka null
         public Kandidat(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, int jmbg) : base(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg)
@@ -40,18 +40,18 @@ namespace VVSZadaca1
             return stranka;
         }
 
-        public Boolean getOsvojenMandat()
+        public Boolean getMandat()
         {
-            return osvojenMandat;
+            return mandat;
         }
 
         public Boolean provjeraMandata()
         {
             if(this.getBrojGlasova()>=0.2*this.getStranka().getBrojGlasova())
             {
-                osvojenMandat = true;
+                mandat = true;
             }
-            return osvojenMandat;
+            return mandat;
         }
 
     }
