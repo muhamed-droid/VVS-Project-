@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace VVSZadaca1
 {
     //Osoba je po defaultu glasač
-    internal class Osoba
+    internal class Glasac
     {
         private String ime, prezime;
         private Adresa adresa;
@@ -18,8 +18,8 @@ namespace VVSZadaca1
         private String jedinstveniIdentifikacioniKod;
         private bool datGlas = false; 
 
-        //konstruktor za Osobu
-        public Osoba(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, long jmbg)
+        //konstruktor za Glasaca
+        public Glasac(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, long jmbg)
         {
             this.ime = ime;
             this.prezime = prezime;

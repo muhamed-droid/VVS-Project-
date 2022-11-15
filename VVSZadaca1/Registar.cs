@@ -9,10 +9,10 @@ namespace VVSZadaca1
     internal class Registar
     {
         private List<Kandidat> nezavisniKandidati=new List<Kandidat>();
-        private List<Osoba> glasaci = new List<Osoba>();
+        private List<Glasac> glasaci = new List<Glasac>();
         private List<Stranka> stranke=new List<Stranka>();
         private static int brojGlasaca = 0;
-        public List<Osoba> getGlasaci()
+        public List<Glasac> getGlasaci()
         {
             return glasaci;
 
@@ -25,7 +25,7 @@ namespace VVSZadaca1
         {
             return stranke;
         }
-        public void  dodajGlasaca(Osoba o)
+        public void  dodajGlasaca(Glasac o)
         {
             glasaci.Add(o); 
         }
@@ -37,7 +37,7 @@ namespace VVSZadaca1
         {
             stranke.Add(s);
         }
-        public Osoba identifikacijaGlasaca(string ime, string prezime, long jmbg)
+        public Glasac identifikacijaGlasaca(string ime, string prezime, long jmbg)
         {
             return glasaci.First(item => item.getIme().ToLower().Equals(ime.ToLower()) && item.getPrezime().ToLower().Equals(prezime.ToLower(), StringComparison.Ordinal) && item.getJmbg().Equals(jmbg) );
             

@@ -7,11 +7,11 @@ namespace VVSZadaca1
     {
         static void setUp(Registar r)
         {
-            Osoba glasac1 = new Osoba("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T24", 12345);
-            Osoba glasac2 = new Osoba("Adna", "Mehanovic", new Adresa("Vogosca", "ulica1", 71000, "bb"), new DateTime(2000, 5, 21), "131T29", 12346);
-            Osoba glasac3 = new Osoba("Esma", "Zejnilovic", new Adresa("Brcko", "ulica2", 71365, "bb"), new DateTime(2007, 11, 15), "6ZT182", 12347);
-            Osoba glasac4 = new Osoba("Selma", "Kurtovic", new Adresa("Sarajevo", "ulica3", 71000, "bb"), new DateTime(2002, 12, 4), "310T25", 12348);
-            Osoba glasac5 = new Osoba("Zejneb", "Kost", new Adresa("Sarajevo", "ulica4", 71000, "bb"), new DateTime(2000, 1, 31), "200T12", 12349);
+            Glasac glasac1 = new Glasac("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T24", 12345);
+            Glasac glasac2 = new Glasac("Adna", "Mehanovic", new Adresa("Vogosca", "ulica1", 71000, "bb"), new DateTime(2000, 5, 21), "131T29", 12346);
+            Glasac glasac3 = new Glasac("Esma", "Zejnilovic", new Adresa("Brcko", "ulica2", 71365, "bb"), new DateTime(2007, 11, 15), "6ZT182", 12347);
+            Glasac glasac4 = new Glasac("Selma", "Kurtovic", new Adresa("Sarajevo", "ulica3", 71000, "bb"), new DateTime(2002, 12, 4), "310T25", 12348);
+            Glasac glasac5 = new Glasac("Zejneb", "Kost", new Adresa("Sarajevo", "ulica4", 71000, "bb"), new DateTime(2000, 1, 31), "200T12", 12349);
             r.dodajGlasaca(glasac1);
             r.dodajGlasaca(glasac2);
             r.dodajGlasaca(glasac3);
@@ -81,7 +81,7 @@ namespace VVSZadaca1
             int mjesec = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Unesite dan rodjenja:");
             int dan = Convert.ToInt32(Console.ReadLine());
-            r.dodajGlasaca(new Osoba(ime, prezime, new Adresa(grad,ulica,postanskiBroj,broj), new DateTime(godina, mjesec, dan), licna, jmbg));
+            r.dodajGlasaca(new Glasac(ime, prezime, new Adresa(grad,ulica,postanskiBroj,broj), new DateTime(godina, mjesec, dan), licna, jmbg));
 
         }
         static void Main(string[] args)
@@ -106,7 +106,7 @@ namespace VVSZadaca1
 
                     try
                     {
-                        Osoba o = r.identifikacijaGlasaca(ime, prezime, jmbg);
+                        Glasac o = r.identifikacijaGlasaca(ime, prezime, jmbg);
                         if (o.getDatGlas())
                         {
                             Console.WriteLine("Već ste glasali!");
@@ -240,7 +240,7 @@ namespace VVSZadaca1
                                         Console.WriteLine("Stranke koje su prešle cenzus su: ");
                                         foreach(Stranka s in strankeKojeSuProlseCenzus)
                                         {
-                                            Console.Write(s + ", ");
+                                            Console.Write(s.getPuniNaziv() + ", ");
                                         }
                                     }
                                     else if (broj == 3)

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
-    internal class Kandidat : Osoba
+    internal class Kandidat : Glasac
     {
         private Stranka stranka;
         int brojGlasova;
+        Boolean osvojenMandat=false;
 
         //po defaultu se kreira nezavisni kandidat u kojem je stranka null
         public Kandidat(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, int jmbg) : base(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg)
@@ -38,5 +39,20 @@ namespace VVSZadaca1
         {
             return stranka;
         }
+
+        public Boolean getOsvojenMandat()
+        {
+            return osvojenMandat;
+        }
+
+        public Boolean provjeraMandata()
+        {
+            if(this.getBrojGlasova()>=0.2*this.getStranka().getBrojGlasova())
+            {
+                osvojenMandat = true;
+            }
+            return osvojenMandat;
+        }
+
     }
 }
