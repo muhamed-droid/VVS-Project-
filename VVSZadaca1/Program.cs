@@ -96,12 +96,12 @@ namespace VVSZadaca1
                 if (input == 1)
                 {
                     Console.WriteLine("Dobro došli na izbore! Unesite vaše podatke!");
-                    Console.WriteLine("Unesite ime:");
+                    Console.WriteLine("Unesite ime: ");
                     string ime = Console.ReadLine();
 
-                    Console.WriteLine("Unesite prezime:");
+                    Console.WriteLine("Unesite prezime: ");
                     string prezime = Console.ReadLine();
-                    Console.WriteLine("Unesite jmbg:");
+                    Console.WriteLine("Unesite jmbg: ");
                     long jmbg = Convert.ToInt32(Console.ReadLine());
 
                     try
@@ -224,7 +224,7 @@ namespace VVSZadaca1
                                     int broj = Convert.ToInt32(Console.ReadLine());
                                     if(broj==1)
                                     {
-                                        double izlaznost = r.getBrojGlasaca() / r.getGlasaci().Count;
+                                        double izlaznost = (double) r.getBrojGlasaca() / (double) r.getGlasaci().Count;
                                         Console.WriteLine("Trenutna izlaznost je: " + r.getBrojGlasaca() + " osoba, odnosno to je: " + izlaznost*100 + "%");
                                     }
                                     else if (broj == 2)
