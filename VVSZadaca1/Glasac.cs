@@ -72,17 +72,10 @@ namespace VVSZadaca1
             stranka.dodajGlas();
         }
 
-        bool daLiJeListicPrazan(List<Kandidat> kandidati)
-        {
-            if (kandidati == null) return true;
-            return false;
-        }
-
-
         bool daLiJeListicValidan(List<Kandidat> kandidati)
         {
             //prazan listic također nije validan listić
-            if (daLiJeListicPrazan(kandidati)) throw new ArgumentNullException("Prazan lisitć");
+            if (kandidati == null) return false;
 
             //glasanje za nezavisnog kandidata se vrsi iskljucivo glasom za jednog tog kandidata
             //sve ostalo je nevazece
