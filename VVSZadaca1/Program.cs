@@ -102,7 +102,7 @@ namespace VVSZadaca1
                     Console.WriteLine("Unesite prezime: ");
                     string prezime = Console.ReadLine();
                     Console.WriteLine("Unesite jmbg: ");
-                    long jmbg = Convert.ToInt32(Console.ReadLine());
+                    long jmbg = long.Parse(Console.ReadLine());
 
                     try
                     {
@@ -240,7 +240,7 @@ namespace VVSZadaca1
                                         Console.WriteLine("Stranke koje su prešle cenzus su: ");
                                         foreach(Stranka s in strankeKojeSuProlseCenzus)
                                         {
-                                            Console.Write(s.getPuniNaziv() + ", ");
+                                            Console.Write(s.getPuniNaziv() + "\n");
                                         }
                                     }
                                     else if (broj == 3)
@@ -258,11 +258,16 @@ namespace VVSZadaca1
                                         {
                                             foreach(Kandidat k in s.getKandidati())
                                             {
-                                                if (k.getBrojGlasova() >= 0.2 * s.getBrojGlasova()  && r.getBrojGlasaca()>0)
+                                                if (k.getBrojGlasova() >= 0.2 * s.getBrojGlasova()  && r.getBrojGlasaca()>0 && k.getBrojGlasova()>0)
                                                 {
                                                     kandidatiKojiSuOsvojiliMandat.Add(k);
                                                 }
                                             }
+                                        }
+                                        Console.WriteLine("Kandidati koji su prešli cenzus su:");
+                                        foreach (Kandidat k in kandidatiKojiSuOsvojiliMandat)
+                                        {
+                                            Console.Write(k + "\n");
                                         }
                                     }
                                     else

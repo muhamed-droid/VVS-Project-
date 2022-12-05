@@ -53,6 +53,10 @@ namespace VVSZadaca1
             }
             return mandat;
         }
+        public override string ToString()
+        {
+            return getIme() + " " + getPrezime();
+        }
 
     }
 }

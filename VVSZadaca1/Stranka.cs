@@ -52,5 +52,7 @@ namespace VVSZadaca1
             kandidati.Remove(kandidat);
         }
 
+
+
     }
 }
