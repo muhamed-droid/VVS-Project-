@@ -42,15 +42,19 @@ namespace VVSZadaca1
             return glasaci.First(item => item.getIme().ToLower().Equals(ime.ToLower()) && item.getPrezime().ToLower().Equals(prezime.ToLower(), StringComparison.Ordinal) && item.getJmbg().Equals(jmbg) );
             
         }
-        public void unesiGlas()
+        public void dodajGlas()
         {
             brojGlasaca++;
+        }
+
+        public void ukloniGlas()
+        {
+            brojGlasaca--;
         }
 
         public int getBrojGlasaca()
         {
             return brojGlasaca;
         }
-
     }
 }
