@@ -101,12 +101,10 @@ namespace VVSZadaca1
         //dodaje glas svim kandidatima koji su u listi, naravno ako pripadaju istoj stranci.
         public void glasaj(List<Kandidat> kandidati) 
         {
-            if (kandidati.Count == 0) return;
-            if (!daLiJeListicValidan(kandidati)) return;
+            if (kandidati.Count == 0 || !daLiJeListicValidan(kandidati)) return;
             foreach(Kandidat k in kandidati){
                 k.dodajGlas();
             }
-          
         }
     }
 }
