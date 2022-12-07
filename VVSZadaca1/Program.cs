@@ -245,6 +245,8 @@ namespace VVSZadaca1
                                     }
                                     else if (broj == 3)
                                     {
+                                        //funkcionalnost 3, omogućiti pregled informacija za sve političke stranke i kandidate
+                                        //Radio: Muhamed Masnopita
                                         List<Kandidat> kandidatiKojiSuOsvojiliMandat = new List<Kandidat>();
                                         foreach (Kandidat k in r.getNezavisnikandidati())
                                         {
