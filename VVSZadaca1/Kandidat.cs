@@ -9,12 +9,14 @@ namespace VVSZadaca1
     internal class Kandidat : Glasac
     {
         private Stranka stranka;
+        private List<Glasac> glasaci;
         int brojGlasova;
         Boolean mandat=false;
 
         //po defaultu se kreira nezavisni kandidat u kojem je stranka null
         public Kandidat(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, int jmbg) : base(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg)
         {
+            this.glasaci = new List<Glasac>();
             brojGlasova = 0;
         }
 
@@ -24,10 +26,15 @@ namespace VVSZadaca1
             this.stranka = stranka;
         }
 
-        //kandidat dobija glas
-        public void dodajGlas()
+        public void dodajGlas(Glasac glasac)
         {
+            glasaci.Add(glasac);
             brojGlasova++;
+        }
+        public void ukloniGlas(Glasac glasac)
+        {
+            glasaci.Remove(glasac);
+            brojGlasova--;
         }
 
         public int getBrojGlasova()
@@ -58,5 +65,9 @@ namespace VVSZadaca1
             return getIme() + " " + getPrezime();
         }
 
+        public List<Glasac> getGlasaci()
+        {
+            return glasaci;
+        }
     }
 }

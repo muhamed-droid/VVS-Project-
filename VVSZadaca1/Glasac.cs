@@ -51,9 +51,9 @@ namespace VVSZadaca1
         {
             return datGlas;
         }
-        public void setDatGlas()
+        public void setDatGlas(bool flag)
         {
-            this.datGlas = true;
+            this.datGlas = flag;
         }
 
         public override string ToString()
@@ -69,7 +69,7 @@ namespace VVSZadaca1
         //dodaje glas stranci
         public void glasaj(Stranka stranka)
         {
-            stranka.dodajGlas();
+            stranka.dodajGlas(this);
         }
 
         bool daLiJeListicValidan(List<Kandidat> kandidati)
@@ -103,7 +103,7 @@ namespace VVSZadaca1
         {
             if (kandidati.Count == 0 || !daLiJeListicValidan(kandidati)) return;
             foreach(Kandidat k in kandidati){
-                k.dodajGlas();
+                k.dodajGlas(this);
             }
         }
     }
