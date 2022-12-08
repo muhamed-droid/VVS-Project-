@@ -56,5 +56,79 @@ namespace VVSZadaca1
         {
             return brojGlasaca;
         }
+
+        public void ispisRezultata()
+        {
+            if (brojGlasaca == 0) Console.Write("Izbori još nisu počeli");
+            else
+            {
+                List<Stranka> strankeKojeSuProlseCenzus = new List<Stranka>();
+                foreach (Stranka s in this.getStranke())
+                {
+                    if (s.getBrojGlasova() > 0.02 * this.getBrojGlasaca())
+                    {
+                        strankeKojeSuProlseCenzus.Add(s);
+                    }
+                }
+
+                foreach (Stranka s in strankeKojeSuProlseCenzus)
+                {
+                    Console.Write(s.getPuniNaziv() + ":");
+                    foreach(Kandidat k in s.getKandidati())
+                    {
+                        if (k.getBrojGlasova() >= 0.2 * s.getBrojGlasova() && this.getBrojGlasaca() > 0 && k.getBrojGlasova() > 0)
+                        {
+                            double procenat = (double)k.getBrojGlasova() / (double)s.getBrojGlasova();
+                            Console.Write(k + " broj glasova: " + k.getBrojGlasova() + " procenat osvojenih glasova: " + procenat*100 + "%\n");
+                        }
+                    }
+                    Console.WriteLine();
+                }
+            } 
+        } 
+
+        public double dajIzlaznost()
+        {
+            double izlaznost = (double)this.getBrojGlasaca() / (double)this.getGlasaci().Count;
+            return 1.0;
+        }
+
+        public List<Stranka> dajStrankeKojeSuPresleCenzus()
+        {
+            List<Stranka> strankeKojeSuPresleCenzus = new List<Stranka>();
+            foreach (Stranka s in this.getStranke())
+            {
+                if (s.getBrojGlasova() > 0.02 * this.getBrojGlasaca())
+                {
+                    strankeKojeSuPresleCenzus.Add(s);
+                }
+            }
+            return strankeKojeSuPresleCenzus;
+        }
+
+        public List<Kandidat> dajKandidateKojiSuOsvojiliMandat()
+        {
+            List<Kandidat> kandidatiKojiSuOsvojiliMandat = new List<Kandidat>();
+            foreach (Kandidat k in this.getNezavisnikandidati())
+            {
+                if (k.getBrojGlasova() >= 0.02 * this.getBrojGlasaca() && this.getBrojGlasaca() > 0)
+                {
+                    kandidatiKojiSuOsvojiliMandat.Add(k);
+                }
+            }
+            List<Stranka> listaStranki = this.getStranke();
+            foreach (Stranka s in listaStranki)
+            {
+                foreach (Kandidat k in s.getKandidati())
+                {
+                    if (k.getBrojGlasova() >= 0.2 * s.getBrojGlasova() && this.getBrojGlasaca() > 0 && k.getBrojGlasova() > 0)
+                    {
+                        kandidatiKojiSuOsvojiliMandat.Add(k);
+                    }
+                }
+            }
+            return kandidatiKojiSuOsvojiliMandat;
+        }
+
     }
 }

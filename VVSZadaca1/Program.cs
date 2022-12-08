@@ -267,21 +267,14 @@ namespace VVSZadaca1
                                     int broj = Convert.ToInt32(Console.ReadLine());
                                     if (broj == 1)
                                     {
-                                        double izlaznost = (double) r.getBrojGlasaca() / (double) r.getGlasaci().Count;
-                                        Console.WriteLine("Trenutna izlaznost je: " + r.getBrojGlasaca() + " osoba, odnosno to je: " + izlaznost*100 + "%");
+                                        
+                                        Console.WriteLine("Trenutna izlaznost je: " + r.getBrojGlasaca() + " osoba, odnosno to je: " + r.dajIzlaznost()*100 + "%");
                                     }
                                     else if (broj == 2)
                                     {
-                                        List<Stranka> strankeKojeSuProlseCenzus = new List<Stranka>();
-                                        foreach (Stranka s in r.getStranke())
-                                        {
-                                            if (s.getBrojGlasova() > 0.02 * r.getBrojGlasaca())
-                                            {
-                                                strankeKojeSuProlseCenzus.Add(s);
-                                            }
-                                        }
+                                        
                                         Console.WriteLine("Stranke koje su prešle cenzus su: ");
-                                        foreach (Stranka s in strankeKojeSuProlseCenzus)
+                                        foreach (Stranka s in r.dajStrankeKojeSuPresleCenzus())
                                         {
                                             Console.Write(s.getPuniNaziv() + "\n");
                                         }
@@ -290,29 +283,27 @@ namespace VVSZadaca1
                                     {
                                         //funkcionalnost 3, omogućiti pregled informacija za sve političke stranke i kandidate
                                         //Radio: Muhamed Masnopita
-                                        List<Kandidat> kandidatiKojiSuOsvojiliMandat = new List<Kandidat>();
-                                        foreach (Kandidat k in r.getNezavisnikandidati())
-                                        {
-                                            if (k.getBrojGlasova() >= 0.02 * r.getBrojGlasaca() && r.getBrojGlasaca() > 0)
-                                            {
-                                                kandidatiKojiSuOsvojiliMandat.Add(k);
-                                            }
-                                        }
-                                        List<Stranka> listaStranki = r.getStranke();
-                                        foreach (Stranka s in listaStranki)
-                                        {
-                                            foreach (Kandidat k in s.getKandidati())
-                                            {
-                                                if (k.getBrojGlasova() >= 0.2 * s.getBrojGlasova()  && r.getBrojGlasaca()>0 && k.getBrojGlasova()>0)
-                                                {
-                                                    kandidatiKojiSuOsvojiliMandat.Add(k);
-                                                }
-                                            }
-                                        }
+                                        
                                         Console.WriteLine("Kandidati koji su prešli cenzus su:");
-                                        foreach (Kandidat k in kandidatiKojiSuOsvojiliMandat)
+                                        foreach (Kandidat k in r.dajKandidateKojiSuOsvojiliMandat())
                                         {
                                             Console.Write(k + "\n");
+                                        }
+
+                                        Console.WriteLine("Odaberite jednu od ponuđenih opcija: ");
+                                        Console.WriteLine("1. spisak kandidata koji su osvojili mandat po strankama. ");
+                                        Console.WriteLine("0. bez spiska.");
+
+                                        int temp = Convert.ToInt32(Console.ReadLine());
+                                        if (temp == 0) break;
+                                        else if(temp == 1)
+                                        {
+                                            //spisak ispisujemo
+                                            r.ispisRezultata();
+                                            
+                                        } else
+                                        {
+                                            Console.WriteLine("Odabrali ste nepostojeću opciju!");
                                         }
                                     }
                                     else
