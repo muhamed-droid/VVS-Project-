@@ -12,6 +12,7 @@ namespace VVSZadaca1
         private int brojGlasova;
         private List<Kandidat> kandidati;
         private List<Glasac> glasaci;
+        private List<Glasac> clanoviRukovodstva;
 
         public Stranka(string identifikacionaSkracenica, string puniNaziv)
         {
@@ -19,6 +20,7 @@ namespace VVSZadaca1
             this.puniNaziv = puniNaziv;
             this.kandidati = new List<Kandidat>();
             this.glasaci = new List<Glasac>();
+            this.clanoviRukovodstva = new List<Glasac>();
             this.brojGlasova = 0;
         }
 
@@ -38,6 +40,32 @@ namespace VVSZadaca1
         {
             return kandidati;
         }
+        public List<Glasac> getClanoviRukovodstva()
+        {
+            return clanoviRukovodstva;
+        }
+        public List<Glasac> getClanoviRukovodstvaKandidovani()
+        {
+            var listaKandidataRukovodstva = new List<Glasac>();
+            for (int i = 0; i < clanoviRukovodstva.size(); i++)
+
+                for (int j = 0; j < kandidati.size(); j++)
+                    if (kandidati[j].getJmbg().equals(clanoviRukovodstva[i].getJmbg()))
+                        listaKandidataRukovodstva.add(kandidati[j]);
+
+            return listaKandidataRukovodstva;
+
+            
+        }
+        public int getUkupanBrojGlasovaRukovodstva()
+        {
+            var lista = getClanoviRukovodstvaKandidovani();
+            int zbir = 0;
+            foreach (var clan in lista)
+                zbir += clan.getBrojGlasova();
+            return zbir;
+        }
+
         public void dodajGlas(Glasac glasac)
         {
             glasaci.Add(glasac);
