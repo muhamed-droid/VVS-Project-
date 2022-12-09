@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VVSZadaca1
 {
-    internal class Program
+    public class Program
     {
         static void setUp(Registar r)
         {

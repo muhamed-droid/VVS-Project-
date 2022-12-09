@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
-    internal class Adresa
+    public class Adresa
     {
         String nazivGrada, nazivUlice;
         int postanskiBroj;

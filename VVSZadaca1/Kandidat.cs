@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
-    internal class Kandidat : Glasac
+    public class Kandidat : Glasac
     {
         private Stranka stranka;
         private List<Glasac> glasaci;
-        int brojGlasova;
+        private int brojGlasova;
         Boolean mandat=false;
 
         //po defaultu se kreira nezavisni kandidat u kojem je stranka null

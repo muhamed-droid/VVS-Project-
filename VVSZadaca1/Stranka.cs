@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
-    internal class Stranka
+    public class Stranka
     {
         private String identifikacionaSkracenica, puniNaziv;
         private int brojGlasova;
         private List<Kandidat> kandidati;
         private List<Glasac> glasaci;
-        private List<Glasac> clanoviRukovodstva;
+        private List<Kandidat> clanoviRukovodstva;
 
         public Stranka(string identifikacionaSkracenica, string puniNaziv)
         {
@@ -20,7 +20,7 @@ namespace VVSZadaca1
             this.puniNaziv = puniNaziv;
             this.kandidati = new List<Kandidat>();
             this.glasaci = new List<Glasac>();
-            this.clanoviRukovodstva = new List<Glasac>();
+            this.clanoviRukovodstva = new List<Kandidat>();
             this.brojGlasova = 0;
         }
 
@@ -40,18 +40,18 @@ namespace VVSZadaca1
         {
             return kandidati;
         }
-        public List<Glasac> getClanoviRukovodstva()
+        public List<Kandidat> getClanoviRukovodstva()
         {
             return clanoviRukovodstva;
         }
         public List<Glasac> getClanoviRukovodstvaKandidovani()
         {
             var listaKandidataRukovodstva = new List<Glasac>();
-            for (int i = 0; i < clanoviRukovodstva.size(); i++)
+            for (int i = 0; i < clanoviRukovodstva.Count; i++)
 
-                for (int j = 0; j < kandidati.size(); j++)
-                    if (kandidati[j].getJmbg().equals(clanoviRukovodstva[i].getJmbg()))
-                        listaKandidataRukovodstva.add(kandidati[j]);
+                for (int j = 0; j < kandidati.Count; j++)
+                    if (kandidati[j].getJmbg().Equals(clanoviRukovodstva[i].getJmbg()))
+                        listaKandidataRukovodstva.Add(kandidati[j]);
 
             return listaKandidataRukovodstva;
 
@@ -61,7 +61,7 @@ namespace VVSZadaca1
         {
             var lista = getClanoviRukovodstvaKandidovani();
             int zbir = 0;
-            foreach (var clan in lista)
+            foreach (Kandidat clan in lista)
                 zbir += clan.getBrojGlasova();
             return zbir;
         }

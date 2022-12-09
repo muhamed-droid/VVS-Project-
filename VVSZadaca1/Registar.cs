@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
-    internal class Registar
+    public class Registar
     {
         private List<Kandidat> nezavisniKandidati=new List<Kandidat>();
         private List<Glasac> glasaci = new List<Glasac>();
@@ -56,7 +56,7 @@ namespace VVSZadaca1
         {
             return brojGlasaca;
         }
-
+        //Muhamed Masnopita
         public void ispisRezultata()
         {
             if (brojGlasaca == 0) Console.Write("Izbori još nisu počeli");

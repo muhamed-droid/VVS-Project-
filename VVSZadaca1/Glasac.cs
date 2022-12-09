@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace VVSZadaca1
 {
     //Osoba je po defaultu glasač
-    internal class Glasac
+    public class Glasac
     {
         private String ime, prezime;
         private Adresa adresa;
@@ -72,7 +72,7 @@ namespace VVSZadaca1
             stranka.dodajGlas(this);
         }
 
-        bool daLiJeListicValidan(List<Kandidat> kandidati)
+        public bool daLiJeListicValidan(List<Kandidat> kandidati)
         {
             //prazan listic također nije validan listić
             if (kandidati == null) return false;
