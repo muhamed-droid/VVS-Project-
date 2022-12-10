@@ -53,6 +53,10 @@ namespace VVSZadaca1
             nip.dodajKandidata(dino);
             ns.dodajKandidata(forto);
             df.dodajKandidata(komso);
+            sda.dodajClanaRukovodstva(bakir);
+            sda.dodajClanaRukovodstva(dodik);
+            nip.dodajClanaRukovodstva(dino);
+            sdp.dodajClanaRukovodstva(denis);
             //stavit cu borjanu i irfana kao nezavisnog
             r.dodajKandidata(irfan);
             r.dodajKandidata(borjana);
@@ -180,7 +184,7 @@ namespace VVSZadaca1
                                 r.dodajGlas();
                                 o.glasaj(stranka);
                                 o.setDatGlas(true);
-                                Console.WriteLine("Unesite imena i prezimena kandidata stranke za koje zelite glasati (svaki kandidat u novi red) ili 0 ukoliko ne zelite glasati ili ste zavrsili sa odabirom kandidata");
+                                
                                 int j = 0;
                                 foreach (Kandidat kandidat in stranka.getKandidati())
                                 {
@@ -190,6 +194,7 @@ namespace VVSZadaca1
                                 List<Kandidat> kandidati = new List<Kandidat>();
                                 for (; ; )
                                 {
+                                    Console.WriteLine("Unesite imena i prezimena kandidata stranke za koje zelite glasati (svaki kandidat u novi red) ili 0 ukoliko ne zelite glasati ili ste zavrsili sa odabirom kandidata");
                                     string inputKandidata = Console.ReadLine().ToUpper();
                                     if (inputKandidata == "0")
                                         break;
@@ -197,7 +202,10 @@ namespace VVSZadaca1
                                     if (kandidat == null)
                                         Console.WriteLine("Kandidat ne postoji!");
                                     else
+                                    {
                                         kandidati.Add(kandidat);
+                                        break;
+                                    }
                                 }
                                 o.glasaj(kandidati);
                                 Console.WriteLine("Uspješno ste glasali. Hvala!");
@@ -249,6 +257,8 @@ namespace VVSZadaca1
                             Console.WriteLine("1. Unos glasaca");
                             Console.WriteLine("2. Pregled svih glasaca");
                             Console.WriteLine("3. Pregled statistike");
+                            Console.WriteLine("4. Pregled rezultata rukovodstva stranke");
+                            Console.WriteLine("5. Pregled rezultata rukovodstva svih stranaka");
                             int inputAdmina = Convert.ToInt32(Console.ReadLine());
 
                             switch (inputAdmina)
@@ -310,6 +320,44 @@ namespace VVSZadaca1
                                     {
                                         Console.WriteLine("Odabrali ste nepostojeću opciju!");
                                     }
+                                    break;
+                                case 4:
+                                    Console.WriteLine("Unesite identifikacionu skracenicu stranke");
+                                    string inputStranke = Console.ReadLine().ToUpper();
+                                    Stranka stranka = r.getStranke().Find(s => s.getIdentifikacionaSkracenica().Equals(inputStranke));
+                                    if (stranka == null)
+                                        Console.WriteLine("Ta stranka ne postoji!");
+                                    else
+                                    {
+                                       Console.WriteLine("Ukupan broj glasova rukovodstva stranke" + stranka.getUkupanBrojGlasovaRukovodstva());
+
+                                        foreach (var clan in stranka.getClanoviRukovodstvaKandidovani())
+                                            Console.WriteLine(clan.getIme());
+                                      
+                                    }
+                                    
+
+                                    break;
+                                    //Funkcionalnost 4-Selma Kurtovic
+                                case 5:
+                                    var ukupno = 0;
+                                for (var j=0; j<r.getStranke().Count; j++)
+                                        foreach (var clan in r.getStranke()[j].getClanoviRukovodstvaKandidovani())
+                                            ukupno += clan.getBrojGlasova();
+                                        
+                                    Console.WriteLine("Ukupan broj glasova: " + ukupno);
+                                    Console.Write("Kandidati: ");
+                                for (var j = 0; j < r.getStranke().Count; j++) {
+             
+                                int brojKandidata = r.getStranke()[j].getClanoviRukovodstvaKandidovani().Count;
+                                       for (var k = 0; k < brojKandidata; k++)
+
+
+                                  Console.Write("Identifikacioni broj: " + r.getStranke()[j].getClanoviRukovodstvaKandidovani()[k].getJedinstveniIdentifikacioniKod() + ", ");
+                                                                }
+                                      Console.Write("\n");
+               
+               
                                     break;
                             }
                             break;
