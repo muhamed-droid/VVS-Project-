@@ -158,7 +158,7 @@ namespace VVSZadaca1
                                 if (poruka.Contains("tačnu"))
                                     break;
                             }
-                            o.setDatGlas(false);
+                            /*o.setDatGlas(false);
                             r.ukloniGlas();
                             Stranka stranka = r.getStranke().Find(s => s.getGlasaci().Contains(o));
                             if (stranka != null)
@@ -172,7 +172,8 @@ namespace VVSZadaca1
                                 {
                                     kandidat.ukloniGlas(o);
                                 }
-                            }
+                            }*/
+                            r.restartujGlasanje(o);
                         }
                         //Funkcionalnost br.5 Esma Zejnilović
 

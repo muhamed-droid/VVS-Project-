@@ -153,5 +153,23 @@ namespace VVSZadaca1
 
         }
 
+        public void restartujGlasanje(Glasac o)
+        {
+            o.setDatGlas(false);
+            ukloniGlas();
+            Stranka stranka = getStranke().Find(s => s.getGlasaci().Contains(o));
+            if (stranka != null)
+            {
+                stranka.ukloniGlas(o);
+            }
+            List<Kandidat> kandidati = getNezavisnikandidati().FindAll(k => k.getGlasaci().Contains(o));
+            if (kandidati != null)
+            {
+                foreach (Kandidat kandidat in kandidati)
+                {
+                    kandidat.ukloniGlas(o);
+                }
+            }
+        }
     }
 }
