@@ -130,5 +130,28 @@ namespace VVSZadaca1
             return kandidatiKojiSuOsvojiliMandat;
         }
 
+        public int getUkupanBrojGlasovaRukvodstvaStranaka()
+        {
+            var ukupno = 0;
+            for (var i = 0; i < stranke.Count; i++)
+                foreach (var clan in stranke[i].getClanoviRukovodstvaKandidovani())
+                    ukupno += clan.getBrojGlasova();
+            return ukupno;
+        }
+
+        public List<Kandidat> getKandidovanoRukovodstvoSvihStranaka()
+        {
+            List<Kandidat> list = new List<Kandidat>();
+            for (var i = 0; i < stranke.Count; i++)
+            {
+
+                int brojKandidata = stranke[i].getClanoviRukovodstvaKandidovani().Count;
+                for (var j = 0; j < brojKandidata; j++)
+                    list.Add(stranke[i].getClanoviRukovodstvaKandidovani()[j]);
+            }
+            return list;
+
+        }
+
     }
 }
