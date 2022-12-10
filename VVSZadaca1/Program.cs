@@ -340,21 +340,16 @@ namespace VVSZadaca1
                                     break;
                                     //Funkcionalnost 4-Selma Kurtovic
                                 case 5:
-                                    var ukupno = 0;
-                                for (var j=0; j<r.getStranke().Count; j++)
-                                        foreach (var clan in r.getStranke()[j].getClanoviRukovodstvaKandidovani())
-                                            ukupno += clan.getBrojGlasova();
+                                    var ukupno = r.getUkupanBrojGlasovaRukvodstvaStranaka();
                                         
                                     Console.WriteLine("Ukupan broj glasova: " + ukupno);
                                     Console.Write("Kandidati: ");
-                                for (var j = 0; j < r.getStranke().Count; j++) {
-             
-                                int brojKandidata = r.getStranke()[j].getClanoviRukovodstvaKandidovani().Count;
-                                       for (var k = 0; k < brojKandidata; k++)
+                                    var kandidati = r.getKandidovanoRukovodstvoSvihStranaka();
+                                    for(var i=0; i<kandidati.Count; i++)
 
 
-                                  Console.Write("Identifikacioni broj: " + r.getStranke()[j].getClanoviRukovodstvaKandidovani()[k].getJedinstveniIdentifikacioniKod() + ", ");
-                                                                }
+                   Console.Write("Identifikacioni broj: " + kandidati[i].getJedinstveniIdentifikacioniKod() + ", ");
+                                                                
                                       Console.Write("\n");
                
                
