@@ -57,9 +57,10 @@ namespace VVSZadaca1
             return brojGlasaca;
         }
         //Muhamed Masnopita
-        public void ispisRezultata()
+        public String ispisRezultata()
         {
-            if (brojGlasaca == 0) Console.Write("Izbori još nisu počeli");
+            String ispis = "";
+            if (brojGlasaca == 0) ispis = "Izbori još nisu počeli";
             else
             {
                 List<Stranka> strankeKojeSuProlseCenzus = new List<Stranka>();
@@ -73,24 +74,24 @@ namespace VVSZadaca1
 
                 foreach (Stranka s in strankeKojeSuProlseCenzus)
                 {
-                    Console.Write(s.getPuniNaziv() + ":");
+                    ispis = s.getPuniNaziv() + ":\n";
                     foreach(Kandidat k in s.getKandidati())
                     {
                         if (k.getBrojGlasova() >= 0.2 * s.getBrojGlasova() && this.getBrojGlasaca() > 0 && k.getBrojGlasova() > 0)
                         {
                             double procenat = (double)k.getBrojGlasova() / (double)s.getBrojGlasova();
-                            Console.Write(k + " broj glasova: " + k.getBrojGlasova() + " procenat osvojenih glasova: " + procenat*100 + "%\n");
+                            ispis = ispis + k + " broj glasova: " + k.getBrojGlasova() + " procenat osvojenih glasova: " + procenat*100 + "%\n";
                         }
                     }
-                    Console.WriteLine();
+                    ispis = ispis + "\n";
                 }
-            } 
+            }
+            return ispis;
         } 
 
         public double dajIzlaznost()
         {
-            double izlaznost = (double)this.getBrojGlasaca() / (double)this.getGlasaci().Count;
-            return 1.0;
+            return (double)this.getBrojGlasaca() / (double)this.getGlasaci().Count;
         }
 
         public List<Stranka> dajStrankeKojeSuPresleCenzus()

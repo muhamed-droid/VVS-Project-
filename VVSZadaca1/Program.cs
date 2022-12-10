@@ -325,7 +325,7 @@ namespace VVSZadaca1
                                         else if(temp == 1)
                                         {
                                             //spisak ispisujemo
-                                            r.ispisRezultata();
+                                            Console.WriteLine(r.ispisRezultata());
                                             
                                         } else
                                         {
