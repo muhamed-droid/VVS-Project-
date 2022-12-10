@@ -106,5 +106,33 @@ namespace VVSZadaca1
                 k.dodajGlas(this);
             }
         }
+
+        //Funkcionalnost br.5 Esma Zejnilović
+        static int brojac = 3;
+        public string ponovnoGlasanje(string sifra)
+        {
+            brojac--;
+            if (sifra.ToUpper() != "VVS20222023")
+            {
+                if (brojac == 0)
+                {
+                    return "Pogrešna šifra! Nemate više pokušaja!";
+                }
+                else
+                    return "Pogrešna šifra! Pokušajte ponovo:";
+            }
+            return "Unijeli ste tačnu šifru!";
+        }
+
+        public string provjeraIdentifikacionogBroja(string jibr)
+        {
+            if (jibr != getJedinstveniIdentifikacioniKod())
+            {
+                return "Unijeli ste pogrešan identifikacioni broj!";
+            }
+            brojac = 3;
+            return "Ispravan identifikacioni broj!";
+        }
+        //Funkcionalnost br.5 Esma Zejnilović
     }
 }

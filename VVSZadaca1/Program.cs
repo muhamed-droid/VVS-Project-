@@ -88,6 +88,32 @@ namespace VVSZadaca1
             r.dodajGlasaca(new Glasac(ime, prezime, new Adresa(grad, ulica, postanskiBroj, broj), new DateTime(godina, mjesec, dan), licna, jmbg));
 
         }
+
+        /*static int brojac = 3;
+        static string ponovnoGlasanje(string sifra)
+        {
+            brojac--;
+            if (sifra.ToUpper() != "VVS20222023")
+            {
+                if (brojac == 0)
+                {
+                    return "Pogrešna šifra! Nemate više pokušaja!";
+                }
+                else
+                    return "Pogrešna šifra! Pokušajte ponovo:";
+            }
+            return "Unijeli ste tačnu šifru!";
+        }
+
+        static string provjeraIdentifikacionogBroja(Glasac o, string jibr)
+        {
+            if (jibr != o.getJedinstveniIdentifikacioniKod())
+            {
+                return "Unijeli ste pogrešan identifikacioni broj!";
+            }
+            return "Ispravan identifikacioni broj!";
+        }*/
+
         static void Main(string[] args)
         {
             Registar r = new Registar();
@@ -111,56 +137,45 @@ namespace VVSZadaca1
                     try
                     {
                         Glasac o = r.identifikacijaGlasaca(ime, prezime, jmbg);
+
+                        //Funkcionalnost br.5 Esma Zejnilović
                         if (o.getDatGlas())
                         {
                             Console.WriteLine("Već ste glasali!\nDa biste ponovo glasali unesite vaš jedinstveni identifikacioni broj:");
                             string jibr = Console.ReadLine();
-                            if(jibr != o.getJedinstveniIdentifikacioniKod())
-                            {
-                                Console.WriteLine("Unijeli ste pogrešan identifikacioni broj!");
+                            string poruka = o.provjeraIdentifikacionogBroja(jibr);
+                            Console.WriteLine(poruka);
+                            if (poruka.Contains("pogrešan"))
                                 return;
-                            }
-                            else
+                            Console.WriteLine("Unesite tajnu šifru:");
+                            for(; ; )
                             {
-                                Console.WriteLine("Unesite tajnu šifru:");
-                                int brojac = 3;
-                                while (brojac != 0)
+                                string sifra = Console.ReadLine();
+                                poruka = o.ponovnoGlasanje(sifra);
+                                Console.WriteLine(poruka);
+                                if (poruka.Contains("Nemate više pokušaja"))
+                                    return;
+                                if (poruka.Contains("tačnu"))
+                                    break;
+                            }
+                            o.setDatGlas(false);
+                            r.ukloniGlas();
+                            Stranka stranka = r.getStranke().Find(s => s.getGlasaci().Contains(o));
+                            if (stranka != null)
+                            {
+                                stranka.ukloniGlas(o);
+                            }
+                            List<Kandidat> kandidati = r.getNezavisnikandidati().FindAll(k => k.getGlasaci().Contains(o));
+                            if (kandidati != null)
+                            {
+                                foreach (Kandidat kandidat in kandidati)
                                 {
-                                    brojac--;
-                                    string sifra = Console.ReadLine();
-                                    if (sifra.ToUpper() != "VVS20222023")
-                                    {
-                                        if(brojac == 0)
-                                        {
-                                            Console.WriteLine("Pogrešna šifra! Nemate više pokušaja!");
-                                            return;
-                                        }
-                                        else 
-                                            Console.WriteLine("Pogrešna šifra! Pokušajte ponovo:");
-                                    }
-                                    else
-                                    {
-                                        break;
-                                    }
+                                    kandidat.ukloniGlas(o);
                                 }
-                                o.setDatGlas(false);
-                                r.ukloniGlas();
-                                Stranka stranka = r.getStranke().Find(s => s.getGlasaci().Contains(o));
-                                if(stranka != null)
-                                {
-                                    stranka.ukloniGlas(o);
-                                }
-                                List<Kandidat> kandidati = r.getNezavisnikandidati().FindAll(k => k.getGlasaci().Contains(o));
-                                if (kandidati != null)
-                                {
-                                    foreach(Kandidat kandidat in kandidati)
-                                    {
-                                        kandidat.ukloniGlas(o);
-                                    }
-                                }
-                                Console.WriteLine("Unijeli ste tačnu šifru!");
                             }
                         }
+                        //Funkcionalnost br.5 Esma Zejnilović
+
                         Console.WriteLine("Vas identifikacijski broj glasi: " + o);
                         Console.WriteLine("Da li zelite glasati za stranku(1) ili za nezavisnog kandidata(2)?");
                         int inputGlasaca = Convert.ToInt32(Console.ReadLine());
