@@ -143,12 +143,6 @@ namespace VVSZadaceTests
             doc.Load("TajneSifre.xml");
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                /*List<string> elements = new List<string>();
-                foreach (XmlNode innerNode in node)
-                {
-                    elements.Add(innerNode.InnerText);
-                }
-                yield return new object[] { elements[0], elements[1], DateTime.Parse(elements[2]), elements[3], elements[4], elements[5] };*/
                 yield return new object[] { node.InnerText };
             }
         }
@@ -156,7 +150,6 @@ namespace VVSZadaceTests
         {
             get
             {
-                //Console.WriteLine(UcitajTajneSifreXML);
                 return UcitajTajneSifreXML();
             }
         }

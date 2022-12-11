@@ -141,7 +141,7 @@ namespace VVSZadace
                         //Funkcionalnost br.5 Esma Zejnilović
                         if (o.getDatGlas())
                         {
-                            Console.WriteLine("Već ste glasali!\nDa biste ponovo glasali unesite vaš jedinstveni identifikacioni broj:");
+                            Console.WriteLine("Već ste glasali!\nDa bi ponovo glasali unesite jedinstveni identifikacioni broj:");
                             string jibr = Console.ReadLine();
                             string poruka = o.provjeraIdentifikacionogBroja(jibr);
                             Console.WriteLine(poruka);

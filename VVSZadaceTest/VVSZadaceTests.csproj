@@ -17,4 +17,10 @@
     <ProjectReference Include="..\VVSZadace\VVSZadace.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TajneSifre.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
