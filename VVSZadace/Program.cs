@@ -166,7 +166,6 @@ namespace VVSZadace
                                 {
                                     r.dodajGlas();
                                     o.glasaj(stranka);
-                                    o.setDatGlas(true);
 
                                     int j = 0;
                                     foreach (Kandidat kandidat in stranka.getKandidati())
@@ -214,7 +213,6 @@ namespace VVSZadace
                                 {
                                     o.glasaj(new List<Kandidat>() { nezavisniKandidat });
                                     r.dodajGlas();
-                                    o.setDatGlas(true);
                                     Console.WriteLine("Uspješno ste glasali. Hvala!");
                                 }
                             }

@@ -93,7 +93,7 @@ namespace VVSZadaceTests
         [TestMethod]
         public void TestIdentifikacioniBroj2()
         {
-            string poruka = admin.provjeraIdentifikacionogBroja("CrRo76851550");
+            string poruka = admin.provjeraIdentifikacionogBroja("CrRoBr05028515");
             StringAssert.Contains(poruka, "Ispravan");
         }
 

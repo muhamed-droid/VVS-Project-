@@ -171,6 +171,7 @@ namespace VVSZadace
         public void glasaj(Stranka stranka)
         {
             stranka.dodajGlas(this);
+            datGlas = true;
         }
 
         public bool daLiJeListicValidan(List<Kandidat> kandidati)
@@ -200,6 +201,14 @@ namespace VVSZadace
             {
                 k.dodajGlas(this);
             }
+            datGlas = true;
+        }
+
+        public bool VjerodostojnostGlasaca(IProvjera sigurnosnaProvjera)
+        {
+            if (sigurnosnaProvjera.DaLiJeVecGlasao(jedinstveniIdentifikacioniKod))
+                throw new Exception("Glasač je već izvršio glasanje!");
+            return true;
         }
     }
 }
