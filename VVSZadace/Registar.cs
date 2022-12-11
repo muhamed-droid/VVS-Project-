@@ -150,7 +150,7 @@ namespace VVSZadace
         }
 
         //Funkcionalnost br.5 Esma Zejnilović
-        public void resetujGlasanje(Glasac o)
+        public void resetGlasanja(Glasac o)
         {
             o.setDatGlas(false);
             ukloniGlas();

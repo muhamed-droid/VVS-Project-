@@ -53,12 +53,12 @@ namespace VVSZadaceTests
         /// Test ponovno glasanje sa unesenom ispravnom tajnom šifrom
         /// </summary>
         [TestMethod]
-        public void TestPonovnoGlasanje1()
+        public void TestTajnaSifra1()
         {
             string poruka;
-            poruka = admin.ponovnoGlasanje("VVS");
+            poruka = admin.provjeraTajneSifre("VVS");
             StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
-            poruka = admin.ponovnoGlasanje("VVS20222023");
+            poruka = admin.provjeraTajneSifre("VVS20222023");
             StringAssert.Equals(poruka, "Unijeli ste tačnu šifru!");
         }
 
@@ -66,14 +66,14 @@ namespace VVSZadaceTests
         /// Test ponovno glasanje sa unesenom neispravnom tajnom šifrom 3 puta
         /// </summary>
         [TestMethod]
-        public void TestPonovnoGlasanje2()
+        public void TestTajnaSifra2()
         {
             string poruka;
-            poruka = admin.ponovnoGlasanje("VVS");
+            poruka = admin.provjeraTajneSifre("VVS");
             StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
-            poruka = admin.ponovnoGlasanje("VVS2022");
+            poruka = admin.provjeraTajneSifre("VVS2022");
             StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
-            poruka = admin.ponovnoGlasanje("VVS2023");
+            poruka = admin.provjeraTajneSifre("VVS2023");
             StringAssert.Equals(poruka, "Pogrešna šifra! Nemate više pokušaja!");
         }
 
@@ -101,14 +101,14 @@ namespace VVSZadaceTests
         /// Test resetovanja glasanja, provjera da li su maknuti glasovi glasaca za određen stranku i/ili nezavisnog kandidata
         /// </summary>
         [TestMethod]
-        public void TestResetujGlasanje()
+        public void TestResetGlasanja()
         {
             int brojGlasaca = r.getBrojGlasaca();
             glasac.glasaj(s1);
             glasac.glasaj(new List<Kandidat>() { k1 });
             Assert.IsTrue(s1.getGlasaci().Contains(glasac));
             Assert.IsTrue(k1.getGlasaci().Contains(glasac));
-            r.resetujGlasanje(glasac);
+            r.resetGlasanja(glasac);
             Assert.IsFalse(glasac.getDatGlas());
             Assert.AreEqual(r.getBrojGlasaca(), brojGlasaca - 1);
             Assert.IsFalse(s1.getGlasaci().Contains(glasac));
@@ -130,9 +130,9 @@ namespace VVSZadaceTests
         }
         [TestMethod]
         [DynamicData("TajneSifre")]
-        public void TestPonovnoGlasanje3(string sifra)
+        public void TestTajnaSifra(string sifra)
         {
-            string poruka = admin.ponovnoGlasanje(sifra);
+            string poruka = admin.provjeraTajneSifre(sifra);
             if(admin.getBrojac() != 0)
                 StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
             else
@@ -158,9 +158,9 @@ namespace VVSZadaceTests
         }
         [TestMethod]
         [DynamicData("TajneSifreXML")]
-        public void TestPonovnoGlasanjeXML(string sifra)
+        public void TestTajnaSifraXML(string sifra)
         {
-            string poruka = admin.ponovnoGlasanje(sifra);
+            string poruka = admin.provjeraTajneSifre(sifra);
             if (admin.getBrojac() != 0)
                 StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
             else

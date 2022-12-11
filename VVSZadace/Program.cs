@@ -369,14 +369,14 @@ namespace VVSZadace
                     for (; ; )
                     {
                         string sifra = Console.ReadLine();
-                        poruka = a.ponovnoGlasanje(sifra);
+                        poruka = a.provjeraTajneSifre(sifra);
                         Console.WriteLine(poruka);
                         if (poruka.Contains("Nemate više pokušaja"))
                             return;
                         if (poruka.Equals("Unijeli ste tačnu šifru!"))
                             break;
                     }
-                    r.resetujGlasanje(glasac);
+                    r.resetGlasanja(glasac);
                     Console.WriteLine("Glasač " + jibr + " može ponovo glasati!");
                 }
                 //Funkcionalnost br.5 Esma Zejnilović

@@ -20,7 +20,7 @@ namespace VVSZadace
         {
             return brojac;
         }
-        public string ponovnoGlasanje(string sifra)
+        public string provjeraTajneSifre(string sifra)
         {
             brojac--;
             if (sifra.ToUpper() != "VVS20222023")
