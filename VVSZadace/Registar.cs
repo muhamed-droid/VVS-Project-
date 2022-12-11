@@ -36,9 +36,11 @@ namespace VVSZadace
         {
             stranke.Add(s);
         }
-        public Glasac identifikacijaGlasaca(string ime, string prezime, long jmbg)
+        public Glasac identifikacijaGlasaca(string ime, string prezime, string jmbg)
         {
-            return glasaci.First(item => item.getIme().ToLower().Equals(ime.ToLower()) && item.getPrezime().ToLower().Equals(prezime.ToLower(), StringComparison.Ordinal) && item.getJmbg().Equals(jmbg));
+            return glasaci.First(item => item.getIme().ToLower().Equals(ime.ToLower()) && 
+            item.getPrezime().ToLower().Equals(prezime.ToLower(), StringComparison.Ordinal) && 
+            item.getJmbg().Equals(jmbg));
 
         }
         public void dodajGlas()

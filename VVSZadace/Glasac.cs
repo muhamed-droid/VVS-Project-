@@ -1,49 +1,150 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace VVSZadace
 {
-    //Osoba je po defaultu glasač
     public class Glasac
     {
         private String ime, prezime;
         private Adresa adresa;
         private DateTime datumRodjenja;
         private String brojLicneKarte;
-        private long jmbg;
+        private string jmbg;
         private String jedinstveniIdentifikacioniKod;
         private bool datGlas = false;
 
-        //konstruktor za Glasaca
-        public Glasac(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, long jmbg)
+        public Glasac(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, string jmbg)
         {
-            this.ime = ime;
-            this.prezime = prezime;
-            this.adresa = adresa;
-            this.datumRodjenja = datumRodjenja;
-            this.brojLicneKarte = brojLicneKarte;
-            this.jmbg = jmbg;
-            //pitanje je da li ćemo ga ovako generisat jer je glupo što ako je mjesec osmi pokupit će 8/
-            //Možda da od godine kupimo
-            this.jedinstveniIdentifikacioniKod = ime.Substring(0, 2) + prezime.Substring(0, 2) +
-                adresa.ToString().Substring(0, 2) + datumRodjenja.Year.ToString().Substring(2, 2) +
-                brojLicneKarte.Substring(0, 2) + jmbg.ToString().Substring(0, 2);
+            this.setIme(ime);
+            this.setPrezime(prezime);
+            this.setAdresa(adresa);
+            this.setDatumRodjenja(datumRodjenja);
+            this.setBrojLicneKarte(brojLicneKarte);
+            this.setJmbg(jmbg);
 
+            this.jedinstveniIdentifikacioniKod = ime.Substring(0, 2) + prezime.Substring(0, 2) + adresa.ToString().Substring(0, 2) +
+                datumRodjenja.ToString("dd") + datumRodjenja.ToString("MM") + datumRodjenja.ToString("yy") +
+                brojLicneKarte.Substring(0, 2);
         }
+
+        public Glasac() { }
+
+        public bool daLiSadrziSlovaICrticu(string input)
+        {
+            return Regex.IsMatch(input, @"^[a-zA-Z\-\s]+$") &&
+                (input.Count(c => c == '-') == 1 || input.Count(c => c == '-') == 0);
+        }
+
+        public bool daLiJePrazan(string input)
+        {
+            return string.IsNullOrWhiteSpace(input);
+        }
+
 
         public string getIme()
         {
             return ime;
         }
+
+        public void setIme(string ime)
+        {
+            if (daLiJePrazan(ime))
+                throw new ArgumentException("Ime je prazno!");
+
+            if (ime.Length < 2 || ime.Length > 40)
+                throw new ArgumentException("Ime nije ispravne dužine!");
+
+            if (!daLiSadrziSlovaICrticu(ime))
+                throw new ArgumentException("Ime smije sadržavati samo slova i crticu!");
+
+            this.ime = ime;
+
+        }
+
         public string getPrezime()
         {
             return prezime;
         }
-        public long getJmbg()
+
+        public void setPrezime(string prezime)
+        {
+            if (daLiJePrazan(prezime))
+                throw new ArgumentException("Prezime je prazno!");
+
+            if (prezime.Length < 3 || ime.Length > 50)
+                throw new ArgumentException("Prezime ispravne dužine!");
+
+            if (!daLiSadrziSlovaICrticu(prezime))
+                throw new ArgumentException("Prezime smije sadržavati samo slova i crticu!");
+
+            this.prezime = prezime;
+
+        }
+
+        public Adresa getAdresa()
+        {
+            return adresa;
+        }
+
+        public void setAdresa(Adresa adresa)
+        {
+            this.adresa = adresa;
+        }
+
+        public string getBrojLicneKarte()
+        {
+            return brojLicneKarte;
+        }
+
+        public void setBrojLicneKarte(string brojLicneKarte)
+        {
+            if (brojLicneKarte.Length == 7 && Regex.IsMatch(brojLicneKarte, @"^\d{3}[EJKMT]\d{3}$"))
+            {
+                this.brojLicneKarte = brojLicneKarte;
+            }
+        }
+
+        public DateTime getDatumRodjenja()
+        {
+            return datumRodjenja;
+        }
+
+        public void setDatumRodjenja(DateTime datumRodjenja)
+        {
+            int godine = DateTime.Now.Year - datumRodjenja.Year;
+            if (DateTime.Now.DayOfYear < datumRodjenja.DayOfYear)
+                godine--;
+
+            if (godine >= 18 && DateTime.Compare(datumRodjenja, DateTime.Now) <= 0)
+            {
+                this.datumRodjenja = datumRodjenja;
+            }
+        }
+
+        public string getJmbg()
         {
             return jmbg;
         }
+
+        public void setJmbg(string jmbg)
+        {
+            string godina = getDatumRodjenja().Year.ToString();
+            if (jmbg.Length == 13 && Regex.IsMatch(jmbg.ToString(), @"^[\d\s]+$") &&
+                 jmbg.Substring(0, 2) == getDatumRodjenja().ToString("dd") &&
+                 jmbg.Substring(2, 2) == getDatumRodjenja().ToString("MM") &&
+                 jmbg.Substring(4, 3) == godina.Substring(godina.Length > 3 ? godina.Length - 3 : 0))
+            {
+                this.jmbg = jmbg;
+            }
+        }
+
+        public string getJedinstveniIdentifikacioniKod()
+        {
+            return this.jedinstveniIdentifikacioniKod;
+        }
+
         public bool getDatGlas()
         {
             return datGlas;
@@ -58,31 +159,19 @@ namespace VVSZadace
             return jedinstveniIdentifikacioniKod;
         }
 
-        public String getJedinstveniIdentifikacioniKod()
-        {
-            return this.jedinstveniIdentifikacioniKod;
-        }
-
-        //dodaje glas stranci
         public void glasaj(Stranka stranka)
         {
             stranka.dodajGlas(this);
-            
         }
 
         public bool daLiJeListicValidan(List<Kandidat> kandidati)
         {
-            //prazan listic također nije validan listić
             if (kandidati == null) return false;
 
-            //glasanje za nezavisnog kandidata se vrsi iskljucivo glasom za jednog tog kandidata
-            //sve ostalo je nevazece
             if (kandidati.ElementAt(0).getStranka() == null && kandidati.Count() > 1) return false;
 
-            //prolazak kroz kandidate
             foreach (var kandidat in kandidati)
             {
-                //prolazak jos jednom kroz kandidate radi poređenja
                 foreach (var poredjenje in kandidati)
                 {
                     //ako kandidat i onaj sa kojim se poredi dolaze iz razlicite stranke, listić je nevažeći
@@ -92,11 +181,9 @@ namespace VVSZadace
                     }
                 }
             }
-            //u suprotnom je važeći
             return true;
         }
 
-        //dodaje glas svim kandidatima koji su u listi, naravno ako pripadaju istoj stranci.
         public void glasaj(List<Kandidat> kandidati)
         {
             if (kandidati.Count == 0 || !daLiJeListicValidan(kandidati)) return;

@@ -11,7 +11,7 @@ namespace VVSZadace
         Boolean mandat = false;
 
         //po defaultu se kreira nezavisni kandidat u kojem je stranka null
-        public Kandidat(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, long jmbg) : base(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg)
+        public Kandidat(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, string jmbg) : base(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg)
         {
             this.glasaci = new List<Glasac>();
             brojGlasova = 0;
