@@ -31,7 +31,7 @@ namespace VVSZadace
 
         public Glasac() { }
 
-        public bool daLiSadrziSlovaICrticu(string input)
+        public bool daLiSadrziSamoSlovaICrticu(string input)
         {
             return Regex.IsMatch(input, @"^[a-zA-Z\-\s]+$") &&
                 (input.Count(c => c == '-') == 1 || input.Count(c => c == '-') == 0);
@@ -51,16 +51,15 @@ namespace VVSZadace
         public void setIme(string ime)
         {
             if (daLiJePrazan(ime))
-                throw new ArgumentException("Ime je prazno!");
+                throw new LicneInformacijeOGlasacuException("Ime ne smije biti prazno!");
 
             if (ime.Length < 2 || ime.Length > 40)
-                throw new ArgumentException("Ime nije ispravne dužine!");
+                throw new LicneInformacijeOGlasacuException("Ime treba da se sastoji od minimalno 2, a maksimalno 40 slova!");
 
-            if (!daLiSadrziSlovaICrticu(ime))
-                throw new ArgumentException("Ime smije sadržavati samo slova i crticu!");
+            if (!daLiSadrziSamoSlovaICrticu(ime))
+                throw new LicneInformacijeOGlasacuException("Ime treba sadržavati samo slova i crticu!");
 
             this.ime = ime;
-
         }
 
         public string getPrezime()
@@ -71,16 +70,15 @@ namespace VVSZadace
         public void setPrezime(string prezime)
         {
             if (daLiJePrazan(prezime))
-                throw new ArgumentException("Prezime je prazno!");
+                throw new LicneInformacijeOGlasacuException("Prezime ne smije biti prazno!");
 
             if (prezime.Length < 3 || ime.Length > 50)
-                throw new ArgumentException("Prezime ispravne dužine!");
+                throw new LicneInformacijeOGlasacuException("Prezime treba da se sastoji od minimalno 3, a maksimalno 50 slova!");
 
-            if (!daLiSadrziSlovaICrticu(prezime))
-                throw new ArgumentException("Prezime smije sadržavati samo slova i crticu!");
+            if (!daLiSadrziSamoSlovaICrticu(prezime))
+                throw new LicneInformacijeOGlasacuException("Prezime treba sadržavati samo slova i crticu!");
 
             this.prezime = prezime;
-
         }
 
         public Adresa getAdresa()
@@ -100,10 +98,13 @@ namespace VVSZadace
 
         public void setBrojLicneKarte(string brojLicneKarte)
         {
-            if (brojLicneKarte.Length == 7 && Regex.IsMatch(brojLicneKarte, @"^\d{3}[EJKMT]\d{3}$"))
-            {
-                this.brojLicneKarte = brojLicneKarte;
-            }
+            if (brojLicneKarte.Length != 7)
+                throw new LicneInformacijeOGlasacuException("Broj lične karte uvijek se sastoji od tačno 7 karaktera!");
+
+            if (!Regex.IsMatch(brojLicneKarte, @"^\d{3}[EJKMT]\d{3}$"))
+                throw new LicneInformacijeOGlasacuException("Nije ispravan format!");
+            
+            this.brojLicneKarte = brojLicneKarte;
         }
 
         public DateTime getDatumRodjenja()
@@ -113,14 +114,18 @@ namespace VVSZadace
 
         public void setDatumRodjenja(DateTime datumRodjenja)
         {
+            if (DateTime.Compare(datumRodjenja, DateTime.Now) > 0)
+                throw new LicneInformacijeOGlasacuException("Datum rođenja ne može biti u budućnosti!");
+
             int godine = DateTime.Now.Year - datumRodjenja.Year;
             if (DateTime.Now.DayOfYear < datumRodjenja.DayOfYear)
                 godine--;
 
-            if (godine >= 18 && DateTime.Compare(datumRodjenja, DateTime.Now) <= 0)
-            {
-                this.datumRodjenja = datumRodjenja;
-            }
+            if (godine < 18)
+                throw new LicneInformacijeOGlasacuException("Glasač mora biti punoljetan!");
+            
+            this.datumRodjenja = datumRodjenja;
+  
         }
 
         public string getJmbg()
@@ -130,14 +135,18 @@ namespace VVSZadace
 
         public void setJmbg(string jmbg)
         {
+            
+            if (jmbg.Length != 13)
+                throw new LicneInformacijeOGlasacuException("Matični broj se mora sastojati od 13 brojeva!");
+
             string godina = getDatumRodjenja().Year.ToString();
-            if (jmbg.Length == 13 && Regex.IsMatch(jmbg.ToString(), @"^[\d\s]+$") &&
-                 jmbg.Substring(0, 2) == getDatumRodjenja().ToString("dd") &&
-                 jmbg.Substring(2, 2) == getDatumRodjenja().ToString("MM") &&
-                 jmbg.Substring(4, 3) == godina.Substring(godina.Length > 3 ? godina.Length - 3 : 0))
-            {
-                this.jmbg = jmbg;
-            }
+            if (!Regex.IsMatch(jmbg.ToString(), @"^[\d\s]+$") ||
+                 jmbg.Substring(0, 2) != getDatumRodjenja().ToString("dd") ||
+                 jmbg.Substring(2, 2) != getDatumRodjenja().ToString("MM") ||
+                 jmbg.Substring(4, 3) != godina.Substring(godina.Length > 3 ? godina.Length - 3 : 0))
+                throw new LicneInformacijeOGlasacuException("Nije ispravan format!");
+            
+            this.jmbg = jmbg;
         }
 
         public string getJedinstveniIdentifikacioniKod()
