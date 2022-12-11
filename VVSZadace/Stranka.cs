@@ -47,7 +47,7 @@ namespace VVSZadace
             for (int i = 0; i < clanoviRukovodstva.Count; i++)
 
                 for (int j = 0; j < kandidati.Count; j++)
-                    if (kandidati[j].getJmbg().Equals(clanoviRukovodstva[i].getJmbg()))
+                    if (kandidati[j].getJedinstveniIdentifikacioniKod() == clanoviRukovodstva[i].getJedinstveniIdentifikacioniKod())
                         listaKandidataRukovodstva.Add(kandidati[j]);
 
             return listaKandidataRukovodstva;
@@ -92,5 +92,13 @@ namespace VVSZadace
         {
             return glasaci;
         }
+
+      /*  public void ispisiRukovodstvo()
+        {
+           
+
+            foreach (var clan in this.getClanoviRukovodstvaKandidovani())
+                Console.Write("Identifikacioni broj: " + clan.getJedinstveniIdentifikacioniKod() + ", ");
+        }*/
     }
 }
