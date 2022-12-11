@@ -152,11 +152,12 @@ DateTime.Parse(elements[2]), elements[3], elements[4], elements[5] };
         }
         [TestMethod]
         [DynamicData("KandidatiCSV")]
-        public void TestRukovodstvo2(string ime, string prezime, DateTime datum, string licna, string id, string stranka_naziv, string stranka,
+        public void TestRukovodstvo2(string ime, string prezime, string licna, string id, string stranka_naziv, string stranka,
            string ulica, string grad, int broj, string drzava)
         {
+            
 
-            Kandidat k = new Kandidat(ime, prezime, new Adresa(ulica, grad, broj, drzava), datum, licna, id);
+            Kandidat k = new Kandidat(ime, prezime, new Adresa(ulica, grad, broj, drzava),DateTime.Now, licna, id);
             Stranka s = new Stranka(stranka, stranka_naziv);
             k.pridruziStranci(s);
             //s.dodajKandidata(k);
