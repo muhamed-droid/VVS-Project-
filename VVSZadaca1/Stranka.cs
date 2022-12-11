@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
@@ -55,7 +52,7 @@ namespace VVSZadaca1
 
             return listaKandidataRukovodstva;
 
-            
+
         }
         public int getUkupanBrojGlasovaRukovodstva()
         {
@@ -80,7 +77,7 @@ namespace VVSZadaca1
         //stranka ima svoju listu kandidata, ovako stranka dodaje kandidata na listu
         public void dodajKandidata(Kandidat kandidat)
         {
-            kandidati.Add(kandidat);   
+            kandidati.Add(kandidat);
         }
         public void dodajClanaRukovodstva(Glasac g)
         {

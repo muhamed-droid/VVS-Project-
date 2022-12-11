@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
@@ -22,7 +18,7 @@ namespace VVSZadaca1
 
         public override string ToString()
         {
-            return postanskiBroj.ToString() + " " + nazivGrada+ " " + nazivUlice + " " + broj;
+            return postanskiBroj.ToString() + " " + nazivGrada + " " + nazivUlice + " " + broj;
         }
 
     }

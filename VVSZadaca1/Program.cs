@@ -148,7 +148,7 @@ namespace VVSZadaca1
                             if (poruka.Contains("pogrešan"))
                                 return;
                             Console.WriteLine("Unesite tajnu šifru:");
-                            for(; ; )
+                            for (; ; )
                             {
                                 string sifra = Console.ReadLine();
                                 poruka = o.ponovnoGlasanje(sifra);
@@ -173,7 +173,7 @@ namespace VVSZadaca1
                                     kandidat.ukloniGlas(o);
                                 }
                             }*/
-                            r.restartujGlasanje(o);
+                            r.resetujGlasanje(o);
                         }
                         //Funkcionalnost br.5 Esma Zejnilović
 
@@ -200,7 +200,7 @@ namespace VVSZadaca1
                                 r.dodajGlas();
                                 o.glasaj(stranka);
                                 o.setDatGlas(true);
-                                
+
                                 int j = 0;
                                 foreach (Kandidat kandidat in stranka.getKandidati())
                                 {
@@ -293,12 +293,12 @@ namespace VVSZadaca1
                                     int broj = Convert.ToInt32(Console.ReadLine());
                                     if (broj == 1)
                                     {
-                                        
-                                        Console.WriteLine("Trenutna izlaznost je: " + r.getBrojGlasaca() + " osoba, odnosno to je: " + r.dajIzlaznost()*100 + "%");
+
+                                        Console.WriteLine("Trenutna izlaznost je: " + r.getBrojGlasaca() + " osoba, odnosno to je: " + r.dajIzlaznost() * 100 + "%");
                                     }
                                     else if (broj == 2)
                                     {
-                                        
+
                                         Console.WriteLine("Stranke koje su prešle cenzus su: ");
                                         foreach (Stranka s in r.dajStrankeKojeSuPresleCenzus())
                                         {
@@ -309,7 +309,7 @@ namespace VVSZadaca1
                                     {
                                         //funkcionalnost 3, omogućiti pregled informacija za sve političke stranke i kandidate
                                         //Radio: Muhamed Masnopita
-                                        
+
                                         Console.WriteLine("Kandidati koji su prešli cenzus su:");
                                         foreach (Kandidat k in r.dajKandidateKojiSuOsvojiliMandat())
                                         {
@@ -322,12 +322,13 @@ namespace VVSZadaca1
 
                                         int temp = Convert.ToInt32(Console.ReadLine());
                                         if (temp == 0) break;
-                                        else if(temp == 1)
+                                        else if (temp == 1)
                                         {
                                             //spisak ispisujemo
                                             Console.WriteLine(r.ispisRezultata());
-                                            
-                                        } else
+
+                                        }
+                                        else
                                         {
                                             Console.WriteLine("Odabrali ste nepostojeću opciju!");
                                         }
@@ -345,30 +346,30 @@ namespace VVSZadaca1
                                         Console.WriteLine("Ta stranka ne postoji!");
                                     else
                                     {
-                                       Console.WriteLine("Ukupan broj glasova rukovodstva stranke" + stranka.getUkupanBrojGlasovaRukovodstva());
+                                        Console.WriteLine("Ukupan broj glasova rukovodstva stranke" + stranka.getUkupanBrojGlasovaRukovodstva());
 
                                         foreach (var clan in stranka.getClanoviRukovodstvaKandidovani())
                                             Console.WriteLine(clan.getIme());
-                                      
+
                                     }
-                                    
+
 
                                     break;
-                                    //Funkcionalnost 4-Selma Kurtovic
+                                //Funkcionalnost 4-Selma Kurtovic
                                 case 5:
                                     var ukupno = r.getUkupanBrojGlasovaRukvodstvaStranaka();
-                                        
+
                                     Console.WriteLine("Ukupan broj glasova: " + ukupno);
                                     Console.Write("Kandidati: ");
                                     var kandidati = r.getKandidovanoRukovodstvoSvihStranaka();
-                                    for(var i=0; i<kandidati.Count; i++)
+                                    for (var i = 0; i < kandidati.Count; i++)
 
 
-                   Console.Write("Identifikacioni broj: " + kandidati[i].getJedinstveniIdentifikacioniKod() + ", ");
-                                                                
-                                      Console.Write("\n");
-               
-               
+                                        Console.Write("Identifikacioni broj: " + kandidati[i].getJedinstveniIdentifikacioniKod() + ", ");
+
+                                    Console.Write("\n");
+
+
                                     break;
                             }
                             break;

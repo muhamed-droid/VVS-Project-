@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
@@ -11,7 +8,7 @@ namespace VVSZadaca1
         private Stranka stranka;
         private List<Glasac> glasaci;
         private int brojGlasova;
-        Boolean mandat=false;
+        Boolean mandat = false;
 
         //po defaultu se kreira nezavisni kandidat u kojem je stranka null
         public Kandidat(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, long jmbg) : base(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg)
@@ -54,7 +51,7 @@ namespace VVSZadaca1
 
         public Boolean provjeraMandata()
         {
-            if(this.getBrojGlasova()>=0.2*this.getStranka().getBrojGlasova())
+            if (this.getBrojGlasova() >= 0.2 * this.getStranka().getBrojGlasova())
             {
                 mandat = true;
             }

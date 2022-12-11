@@ -10,7 +10,6 @@ namespace TestProject
     [TestClass]
     public class TestRegistar
     {
-        //Muhamed Masnopita
         static Registar r;
         static Glasac g1, g2;
         static Kandidat k1, k2;
@@ -40,6 +39,7 @@ namespace TestProject
         }
 
 
+        //Funkcionalnost br.2 Muhamed Masnopita
         [TestMethod]
         public void TestMetodeGetBrojGlasaca()
         {
@@ -142,6 +142,25 @@ namespace TestProject
             Assert.IsTrue(r.dajKandidateKojiSuOsvojiliMandat().Contains(k1));
             Assert.IsTrue(r.dajKandidateKojiSuOsvojiliMandat().Contains(k2));
         }
+        //Funkcionalnost br.2 Muhamed Masnopita
 
+        //Funkcionalnost br.5 Esma Zejnilović
+        [TestMethod]
+        public void TestResetujGlasanje()
+        {
+            int brojGlasaca = r.getBrojGlasaca();
+            //s1.dodajGlas(g1);
+            g1.glasaj(s1);
+            //k1.dodajGlas(g1);
+            g1.glasaj(new List<Kandidat>() { k1 });
+            Assert.IsTrue(s1.getGlasaci().Contains(g1));
+            Assert.IsTrue(k1.getGlasaci().Contains(g1));
+            r.resetujGlasanje(g1);
+            Assert.IsFalse(g1.getDatGlas());
+            Assert.AreEqual(r.getBrojGlasaca(), brojGlasaca - 1);
+            Assert.IsFalse(s1.getGlasaci().Contains(g1));
+            Assert.IsFalse(k1.getGlasaci().Contains(g1));
+        }
+        //Funkcionalnost br.5 Esma Zejnilović
     }
 }

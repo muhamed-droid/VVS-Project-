@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VVSZadaca1
 {
@@ -16,7 +13,7 @@ namespace VVSZadaca1
         private String brojLicneKarte;
         private long jmbg;
         private String jedinstveniIdentifikacioniKod;
-        private bool datGlas = false; 
+        private bool datGlas = false;
 
         //konstruktor za Glasaca
         public Glasac(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, long jmbg)
@@ -29,10 +26,10 @@ namespace VVSZadaca1
             this.jmbg = jmbg;
             //pitanje je da li ćemo ga ovako generisat jer je glupo što ako je mjesec osmi pokupit će 8/
             //Možda da od godine kupimo
-            this.jedinstveniIdentifikacioniKod = ime.Substring(0, 2) + prezime.Substring(0, 2) + 
-                adresa.ToString().Substring(0,2) + datumRodjenja.Year.ToString().Substring(2, 2) + 
-                brojLicneKarte.Substring(0,2) + jmbg.ToString().Substring(0,2);
-           
+            this.jedinstveniIdentifikacioniKod = ime.Substring(0, 2) + prezime.Substring(0, 2) +
+                adresa.ToString().Substring(0, 2) + datumRodjenja.Year.ToString().Substring(2, 2) +
+                brojLicneKarte.Substring(0, 2) + jmbg.ToString().Substring(0, 2);
+
         }
 
         public string getIme()
@@ -65,7 +62,7 @@ namespace VVSZadaca1
         {
             return this.jedinstveniIdentifikacioniKod;
         }
-    
+
         //dodaje glas stranci
         public void glasaj(Stranka stranka)
         {
@@ -79,7 +76,7 @@ namespace VVSZadaca1
 
             //glasanje za nezavisnog kandidata se vrsi iskljucivo glasom za jednog tog kandidata
             //sve ostalo je nevazece
-            if (kandidati.ElementAt(0).getStranka() == null && kandidati.Count() > 1) return false; 
+            if (kandidati.ElementAt(0).getStranka() == null && kandidati.Count() > 1) return false;
 
             //prolazak kroz kandidate
             foreach (var kandidat in kandidati)
@@ -99,10 +96,11 @@ namespace VVSZadaca1
         }
 
         //dodaje glas svim kandidatima koji su u listi, naravno ako pripadaju istoj stranci.
-        public void glasaj(List<Kandidat> kandidati) 
+        public void glasaj(List<Kandidat> kandidati)
         {
             if (kandidati.Count == 0 || !daLiJeListicValidan(kandidati)) return;
-            foreach(Kandidat k in kandidati){
+            foreach (Kandidat k in kandidati)
+            {
                 k.dodajGlas(this);
             }
         }

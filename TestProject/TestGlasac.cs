@@ -7,7 +7,8 @@ namespace TestProject
     [TestClass]
     internal class TestGlasac
     {
-        Glasac glasac;
+        static 
+            Glasac glasac;
 
         [TestInitialize()]
         public void Initialize()
@@ -15,6 +16,7 @@ namespace TestProject
             glasac = new Glasac("Cristiano", "Ronaldo", new Adresa("Brcko", "Mujkici III", 76100, "35"), new DateTime(1985, 2, 5), "156T25", 0502985186500);
         }
 
+        //Funkcionalnost br.5 Esma Zejnilović
         [TestMethod]
         public void TestPonovnoGlasanje1()
         {
@@ -50,5 +52,6 @@ namespace TestProject
             string poruka = glasac.provjeraIdentifikacionogBroja("CR7");
             Assert.AreEqual(poruka, "Ispravan identifikacioni broj!");
         }
+        //Funkcionalnost br.5 Esma Zejnilović
     }
 }
