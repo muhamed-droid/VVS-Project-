@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VVSZadaca1;
+using VVSZadace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VVSZadaca1Tests
+namespace VVSZadaceTests
 {
     [TestClass()]
     public class RegistarTest

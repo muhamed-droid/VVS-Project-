@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VVSZadaca1
+namespace VVSZadace
 {
     //Osoba je po defaultu glasač
     public class Glasac
@@ -106,7 +106,11 @@ namespace VVSZadaca1
         }
 
         //Funkcionalnost br.5 Esma Zejnilović
-        static int brojac = 3;
+        int brojac = 3;
+        public int getBrojac()
+        {
+            return brojac;
+        }
         public string ponovnoGlasanje(string sifra)
         {
             brojac--;

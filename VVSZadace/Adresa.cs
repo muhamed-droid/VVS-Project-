@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VVSZadaca1
+namespace VVSZadace
 {
     public class Adresa
     {

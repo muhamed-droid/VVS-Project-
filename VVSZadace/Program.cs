@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace VVSZadaca1
+namespace VVSZadace
 {
     public class Program
     {
@@ -158,21 +158,6 @@ namespace VVSZadaca1
                                 if (poruka.Contains("tačnu"))
                                     break;
                             }
-                            /*o.setDatGlas(false);
-                            r.ukloniGlas();
-                            Stranka stranka = r.getStranke().Find(s => s.getGlasaci().Contains(o));
-                            if (stranka != null)
-                            {
-                                stranka.ukloniGlas(o);
-                            }
-                            List<Kandidat> kandidati = r.getNezavisnikandidati().FindAll(k => k.getGlasaci().Contains(o));
-                            if (kandidati != null)
-                            {
-                                foreach (Kandidat kandidat in kandidati)
-                                {
-                                    kandidat.ukloniGlas(o);
-                                }
-                            }*/
                             r.resetujGlasanje(o);
                         }
                         //Funkcionalnost br.5 Esma Zejnilović
