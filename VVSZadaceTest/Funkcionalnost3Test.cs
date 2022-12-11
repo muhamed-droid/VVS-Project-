@@ -2,9 +2,7 @@
 using VVSZadace;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
 
 
 namespace VVSZadaceTests
@@ -126,11 +124,6 @@ namespace VVSZadaceTests
                 return new[]
                 {
                 new object[] { "Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T214", "1211992111111", new Stranka("SDA", "Stranka demokratske akcije")},
-                /*new object[] { "Ime", "", DateTime.Parse("01/01/1996"), "0101996170001", "M", "ZD-01" },
-                new object[] { "Ime", "Prezime", DateTime.Now.AddDays(1), "0101996170001", "M", "ZD-01" },
-                new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "5001996170001", "M", "ZD-01" },
-                new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "0101996170001", "Muško", "ZD-01" },
-                new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "0101996170001", "M", "01" } */
                 };
             }
         }
@@ -143,6 +136,36 @@ namespace VVSZadaceTests
             Glasac g = new Glasac(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg);
             g.glasaj(s);
             Assert.AreEqual(1, s.getBrojGlasova());
-        } 
+        }
+
+
+        public static IEnumerable<object[]> UcitajPodatkeXML()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Podaci.xml");
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+                yield return new object[] { node.InnerText };
+            }
+        }
+        static IEnumerable<object[]> PodaciXML
+        {
+            get
+            {
+                return UcitajPodatkeXML();
+            }
+        }
+
+
+        [TestMethod]
+        [DynamicData("PodaciXML")]
+        public void TestTajnaSifraXML(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, string jmbg, Stranka s)
+        {
+            Registar r3 = new Registar();
+            Glasac g = new Glasac(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg);
+            g.glasaj(s);
+            Assert.AreEqual(1, s.getBrojGlasova());
+        }
+
     }
 }
