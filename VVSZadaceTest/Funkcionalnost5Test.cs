@@ -11,12 +11,13 @@ namespace VVSZadaceTests
 {
     //Esma Zejnilovic
     [TestClass]
-    public class Funkcionalnost5Test  //funkcionalnost br.5 = dvije metode u Glasac.cs i jedna metoda u Registar.cs + dio Main-a (koji ne treba testirati)
+    public class Funkcionalnost5Test  //funkcionalnost br.5 = dvije metode u Administrator.cs i jedna metoda u Registar.cs + dio Main-a (koji ne treba testirati)
     {
         static Glasac glasac;
         static Registar r;
         static Kandidat k1;
         static Stranka s1;
+        static Administrator admin;
 
         /// <summary>
         /// Inicijalizacija podataka koja se vrši samo jednom
@@ -35,6 +36,7 @@ namespace VVSZadaceTests
             k1 = new Kandidat("Marija", "Kiri", new Adresa("Poljska", "Warsava", 71224, "321"), new DateTime(1989, 10, 10), "12T657", 1010989232312);
             r.dodajKandidata(k1);
             k1.pridruziStranci(s1);
+            admin = new Administrator(r);
         }
 
         /// <summary>
@@ -44,6 +46,7 @@ namespace VVSZadaceTests
         public void TestInitialize()
         {
             glasac = new Glasac("Cristiano", "Ronaldo", new Adresa("Brcko", "Mujkici III", 76100, "35"), new DateTime(1985, 2, 5), "156T25", 0502985186500);
+            r.dodajGlasaca(glasac);
         }
 
         /// <summary>
@@ -53,9 +56,9 @@ namespace VVSZadaceTests
         public void TestPonovnoGlasanje1()
         {
             string poruka;
-            poruka = glasac.ponovnoGlasanje("VVS");
+            poruka = admin.ponovnoGlasanje("VVS");
             StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
-            poruka = glasac.ponovnoGlasanje("VVS20222023");
+            poruka = admin.ponovnoGlasanje("VVS20222023");
             StringAssert.Equals(poruka, "Unijeli ste tačnu šifru!");
         }
 
@@ -66,11 +69,11 @@ namespace VVSZadaceTests
         public void TestPonovnoGlasanje2()
         {
             string poruka;
-            poruka = glasac.ponovnoGlasanje("VVS");
+            poruka = admin.ponovnoGlasanje("VVS");
             StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
-            poruka = glasac.ponovnoGlasanje("VVS2022");
+            poruka = admin.ponovnoGlasanje("VVS2022");
             StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
-            poruka = glasac.ponovnoGlasanje("VVS2023");
+            poruka = admin.ponovnoGlasanje("VVS2023");
             StringAssert.Equals(poruka, "Pogrešna šifra! Nemate više pokušaja!");
         }
 
@@ -80,8 +83,8 @@ namespace VVSZadaceTests
         [TestMethod]
         public void TestIdentifikacioniBroj1()
         {
-            string poruka = glasac.provjeraIdentifikacionogBroja("CR7");
-            StringAssert.Contains(poruka, "pogrešan");
+            string poruka = admin.provjeraIdentifikacionogBroja("CR7");
+            StringAssert.Contains(poruka, "neispravan");
         }
 
         /// <summary>
@@ -90,7 +93,7 @@ namespace VVSZadaceTests
         [TestMethod]
         public void TestIdentifikacioniBroj2()
         {
-            string poruka = glasac.provjeraIdentifikacionogBroja("CrRo76851550");
+            string poruka = admin.provjeraIdentifikacionogBroja("CrRo76851550");
             StringAssert.Contains(poruka, "Ispravan");
         }
 
@@ -129,8 +132,8 @@ namespace VVSZadaceTests
         [DynamicData("TajneSifre")]
         public void TestPonovnoGlasanje3(string sifra)
         {
-            string poruka = glasac.ponovnoGlasanje(sifra);
-            if(glasac.getBrojac() != 0)
+            string poruka = admin.ponovnoGlasanje(sifra);
+            if(admin.getBrojac() != 0)
                 StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
             else
                 StringAssert.Equals(poruka, "Pogrešna šifra! Nemate više pokušaja!");
@@ -157,8 +160,8 @@ namespace VVSZadaceTests
         [DynamicData("TajneSifreXML")]
         public void TestPonovnoGlasanjeXML(string sifra)
         {
-            string poruka = glasac.ponovnoGlasanje(sifra);
-            if (glasac.getBrojac() != 0)
+            string poruka = admin.ponovnoGlasanje(sifra);
+            if (admin.getBrojac() != 0)
                 StringAssert.Equals(poruka, "Pogrešna šifra! Pokušajte ponovo:");
             else
                 StringAssert.Equals(poruka, "Pogrešna šifra! Nemate više pokušaja!");

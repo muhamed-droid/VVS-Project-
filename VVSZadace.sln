@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VVSZadaceTests", "VVSZadaceTest\VVSZadaceTests.csproj", "{A9593213-AE10-481D-8688-EAB73F97055D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VVSZadace", "VVSZadace\VVSZadace.csproj", "{AE2272C9-4131-4559-8FB8-63985280FE62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VVSZadace", "VVSZadace\VVSZadace.csproj", "{AE2272C9-4131-4559-8FB8-63985280FE62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
