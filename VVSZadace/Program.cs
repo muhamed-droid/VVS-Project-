@@ -7,11 +7,11 @@ namespace VVSZadace
     {
         static void setUp(Registar r)
         {
-            Glasac glasac1 = new Glasac("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T24", 12345);
-            Glasac glasac2 = new Glasac("Adna", "Mehanovic", new Adresa("Vogosca", "ulica1", 71000, "bb"), new DateTime(2000, 5, 21), "131T29", 12346);
-            Glasac glasac3 = new Glasac("Esma", "Zejnilovic", new Adresa("Brcko", "ulica2", 71365, "bb"), new DateTime(2007, 11, 15), "6ZT182", 12347);
-            Glasac glasac4 = new Glasac("Selma", "Kurtovic", new Adresa("Sarajevo", "ulica3", 71000, "bb"), new DateTime(2002, 12, 4), "310T25", 12348);
-            Glasac glasac5 = new Glasac("Zejneb", "Kost", new Adresa("Sarajevo", "ulica4", 71000, "bb"), new DateTime(2000, 1, 31), "200T12", 12349);
+            Glasac glasac1 = new Glasac("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T214", "1511992111111");
+            Glasac glasac2 = new Glasac("Adna", "Mehanovic", new Adresa("Vogosca", "ulica1", 71000, "bb"), new DateTime(2000, 5, 21), "131T219", "2105000222222");
+            Glasac glasac3 = new Glasac("Esma", "Zejnilovic", new Adresa("Brcko", "ulica2", 71365, "bb"), new DateTime(2007, 11, 15), "611T182", "1511007333333");
+            Glasac glasac4 = new Glasac("Selma", "Kurtovic", new Adresa("Sarajevo", "ulica3", 71000, "bb"), new DateTime(2002, 12, 4), "310T225", "0412002444444");
+            Glasac glasac5 = new Glasac("Zejneb", "Kost", new Adresa("Sarajevo", "ulica4", 71000, "bb"), new DateTime(2000, 1, 31), "200T122", "3101000555555");
             r.dodajGlasaca(glasac1);
             r.dodajGlasaca(glasac2);
             r.dodajGlasaca(glasac3);
@@ -31,17 +31,17 @@ namespace VVSZadace
             r.dodajStranku(ns);
             r.dodajStranku(hdz);
             r.dodajStranku(snsd);
-            Kandidat bakir = new Kandidat("Bakir", "Izetbegovic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T21", 99900);
-            Kandidat sebija = new Kandidat("Sebija", "Izetbegovic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T22", 99901);
-            Kandidat dino = new Kandidat("Elmedin", "Konakovic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T23", 99902);
-            Kandidat forto = new Kandidat("Edin", "Forto", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T24", 99903);
-            Kandidat dodik = new Kandidat("Milorad", "Dodik", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T25", 99904);
-            Kandidat denis = new Kandidat("Denis", "Becirovic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T26", 99905);
-            Kandidat komso = new Kandidat("Zeljko", "Komsic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T27", 99906);
-            Kandidat sabina = new Kandidat("Sabina", "Cudic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T28", 99907);
-            Kandidat borjana = new Kandidat("Borjana", "Kristo", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T29", 99908);
-            Kandidat zlatko = new Kandidat("Zlatko", "Lagumdzija", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T30", 99909);
-            Kandidat irfan = new Kandidat("Irfan", "Cengic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T31", 99910);
+            Kandidat bakir = new Kandidat("Bakir", "Izetbegovic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T121", "1511967111111");
+            Kandidat sebija = new Kandidat("Sebija", "Izetbegovic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T422", "1511967111111");
+            Kandidat dino = new Kandidat("Elmedin", "Konakovic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T238", "1511967111111");
+            Kandidat forto = new Kandidat("Edin", "Forto", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T248", "1511967111111");
+            Kandidat dodik = new Kandidat("Milorad", "Dodik", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T285", "1511967111111");
+            Kandidat denis = new Kandidat("Denis", "Becirovic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T826", "1511967111111");
+            Kandidat komso = new Kandidat("Zeljko", "Komsic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T278", "1511967111111");
+            Kandidat sabina = new Kandidat("Sabina", "Cudic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T288", "1511967111111");
+            Kandidat borjana = new Kandidat("Borjana", "Kristo", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T829", "1511967111111");
+            Kandidat zlatko = new Kandidat("Zlatko", "Lagumdzija", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T380", "1511967111111");
+            Kandidat irfan = new Kandidat("Irfan", "Cengic", new Adresa("ka", "la", 21, "bb"), new DateTime(1967, 11, 15), "123T381", "1511967111111");
             r.dodajGlasaca(bakir);
             r.dodajGlasaca(sebija);
             r.dodajGlasaca(dino);
@@ -68,7 +68,7 @@ namespace VVSZadace
             Console.WriteLine("Unesite prezime:");
             string prezime = Console.ReadLine();
             Console.WriteLine("Unesite jmbg:");
-            int jmbg = Convert.ToInt32(Console.ReadLine());
+            string jmbg = Console.ReadLine();
             Console.WriteLine("Unesite grad:");
             string grad = Console.ReadLine();
             Console.WriteLine("Unesite postanski broj:");
@@ -132,7 +132,7 @@ namespace VVSZadace
                     Console.WriteLine("Unesite prezime: ");
                     string prezime = Console.ReadLine();
                     Console.WriteLine("Unesite jmbg: ");
-                    long jmbg = long.Parse(Console.ReadLine());
+                    string jmbg = Console.ReadLine();
 
                     try
                     {

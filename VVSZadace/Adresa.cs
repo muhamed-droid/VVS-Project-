@@ -18,7 +18,7 @@ namespace VVSZadace
 
         public override string ToString()
         {
-            return postanskiBroj.ToString() + " " + nazivGrada + " " + nazivUlice + " " + broj;
+            return nazivGrada + " " + postanskiBroj.ToString() + " " + nazivUlice + " " + broj;
         }
 
     }
