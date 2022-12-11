@@ -12,7 +12,6 @@ namespace VVSZadaceTests
     [TestClass()]
     public class Funkcionalnost3Test
     {
-        //Muhamed Masnopita
         static Registar r;
         static Glasac g1, g2;
         static Kandidat k1, k2;
