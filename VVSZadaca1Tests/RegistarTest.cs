@@ -139,5 +139,28 @@ namespace VVSZadaca1Tests
             Assert.IsTrue(r.dajKandidateKojiSuOsvojiliMandat().Contains(k1));
             Assert.IsTrue(r.dajKandidateKojiSuOsvojiliMandat().Contains(k2));
         }
+
+        static IEnumerable<object[]> Registar1
+        {
+            get
+            {
+                return new[]
+                {
+                new object[] { "", "Prezime", new Adresa("Minken", "Bavaria", 71300,"5") ,DateTime.Parse("01/01/1996"), "0101996170001", "M", "ZD-01" },
+                new object[] { "Ime", "", DateTime.Parse("01/01/1996"), "0101996170001", "M", "ZD-01" },
+                new object[] { "Ime", "Prezime", DateTime.Now.AddDays(1), "0101996170001", "M", "ZD-01" },
+                new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "5001996170001", "M", "ZD-01" },
+                new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "0101996170001", "Muško", "ZD-01" },
+                new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "0101996170001", "M", "01" }
+                };
+            }
+        }
+
+        [TestMethod]
+        [DynamicData ("Registar1")]
+        public void TestKonstruktoraPacijenta(string ime, string prezime, DateTime rođenje, string matični, string spol, string knjižica)
+        {
+            
+        }
     }
 }
