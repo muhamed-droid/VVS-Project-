@@ -47,7 +47,6 @@ namespace VVSZadaceTests
             Assert.IsTrue(flag);
 
             g.glasaj(s);
-            //g.setDatGlas(true);
             try
             {
                 flag = g.VjerodostojnostGlasaca(stub);
