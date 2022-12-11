@@ -8,12 +8,11 @@ namespace VVSZadace
 {
     public class Stub : IProvjera
     {
-        //public string IdentifikacijskiBroj { get; set; }
+        public Registar Registar { get; set; }
         bool IProvjera.DaLiJeVecGlasao(string IDBroj)
         {
-            //IdentifikacijskiBroj = IDBroj;
-
-            throw new NotImplementedException();
+            Glasac glasac = Registar.getGlasaci().Find(g => g.getJedinstveniIdentifikacioniKod() == IDBroj);
+            return glasac.getDatGlas();
         }
     }
 }

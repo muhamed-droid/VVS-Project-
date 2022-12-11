@@ -12,34 +12,50 @@ namespace VVSZadaceTests
     [TestClass]
     public class ZamjenskiObjekatTest
     {
-        /*[TestMethod]
-        public void TestStub()
+        static Registar r;
+        static Glasac g;
+        static Stranka s;
+
+        [ClassInitialize]
+        public static void Initialize(TestContext context)
         {
-            Glasac glasac = new Glasac("Cristiano", "Ronaldo", new Adresa("Brcko", "Mujkici III", 76100, "35"), new DateTime(1985, 2, 5), "156T25", 0502985186500);
-            StubNiskaTemperatura stub1 = new StubNiskaTemperatura();
-            k.AutomatskaKontrola(stub1, true);
-            Assert.AreEqual(k.JačinaGrijanja, 1);
-            StubSrednjaTemperatura stub2 = new StubSrednjaTemperatura();
-            k.AutomatskaKontrola(stub2, true);
-            Assert.AreEqual(k.JačinaGrijanja, 0.5);
-            StubVisokaTemperatura stub3 = new StubVisokaTemperatura();
-            k.AutomatskaKontrola(stub3, true);
-            Assert.AreEqual(k.JačinaGrijanja, 0);
-        }*/
+            r = new Registar();
+            g = new Glasac("Cristiano", "Ronaldo", new Adresa("Brcko", "Mujkici III", 76100, "35"), new DateTime(1985, 2, 5), "156T251", "0502985186500");
+            r.dodajGlasaca(g);
+            s = new Stranka("NIP", "Narod i pravda");
+            r.dodajStranku(s);
+        }
 
         [TestMethod]
         public void TestZamjenskiObjekat()
         {
-            Glasac glasac = new Glasac("Cristiano", "Ronaldo", new Adresa("Brcko", "Mujkici III", 76100, "35"), new DateTime(1985, 2, 5), "156T25", 0502985186500);
-            Stub stub = new Stub();
-            
-            //spy.IdentifikacijskiBroj = "cr7";
-            bool flag = glasac.VjerodostojnostGlasaca(stub);
+            Stub stub = new Stub
+            {
+                Registar = r
+            };
+
+            bool flag;
+
+            try
+            {
+                flag = g.VjerodostojnostGlasaca(stub);
+            }
+            catch(Exception e)
+            {
+                flag = false;
+            }
             Assert.IsTrue(flag);
 
-            glasac.setDatGlas(true);
-            //spy.IdentifikacijskiBroj = "cr7";
-            flag = glasac.VjerodostojnostGlasaca(stub);
+            g.glasaj(s);
+            //g.setDatGlas(true);
+            try
+            {
+                flag = g.VjerodostojnostGlasaca(stub);
+            }
+            catch (Exception e)
+            {
+                flag = false;
+            }
             Assert.IsFalse(flag);
         }
 
