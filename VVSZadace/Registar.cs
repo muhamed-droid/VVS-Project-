@@ -59,9 +59,6 @@ namespace VVSZadace
         public String ispisRezultata()
         {
             String ispis = "";
-            if (brojGlasaca == 0) ispis = "Izbori još nisu počeli";
-            else
-            {
                 List<Stranka> strankeKojeSuProlseCenzus = new List<Stranka>();
                 foreach (Stranka s in this.getStranke())
                 {
@@ -84,7 +81,6 @@ namespace VVSZadace
                     }
                     ispis = ispis + "\n";
                 }
-            }
             return ispis;
         }
 
