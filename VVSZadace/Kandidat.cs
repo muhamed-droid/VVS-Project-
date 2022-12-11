@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace VVSZadaca1
+namespace VVSZadace
 {
     public class Kandidat : Glasac
     {

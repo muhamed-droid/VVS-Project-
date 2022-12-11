@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VVSZadaca1
+namespace VVSZadace
 {
     public class Registar
     {
@@ -153,6 +153,7 @@ namespace VVSZadaca1
 
         }
 
+        //Funkcionalnost br.5 Esma Zejnilović
         public void resetujGlasanje(Glasac o)
         {
             o.setDatGlas(false);
@@ -171,5 +172,6 @@ namespace VVSZadaca1
                 }
             }
         }
+        //Funkcionalnost br.5 Esma Zejnilović
     }
 }
