@@ -142,7 +142,7 @@ namespace VVSZadaceTests
         public static IEnumerable<object[]> UcitajPodatkeXML()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load("Podaci.xml");
+            doc.Load("C:\\Users\\masno\\Source\\Repos\\VVSZadaca1\\VVSZadaceTest\\Podaci.xml");
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 yield return new object[] { node.InnerText };
@@ -159,14 +159,18 @@ namespace VVSZadaceTests
 
         [TestMethod]
         [DynamicData("PodaciXML")]
-        public void TestTajnaSifraXML(string ime, string prezime, String nazivGrada, String nazivUlice, int postanski, String broj, 
-            int godina, int mjesec, int dan, string brojLicneKarte, string jmbg, string skracenicaStranke, string nazivStranke)
+        public void TestTajnaSifraXML(String ulaz)
         {
-            Stranka s = new Stranka(skracenicaStranke, nazivStranke);
-            Registar r3 = new Registar();
-            Glasac g = new Glasac(ime, prezime, new Adresa(nazivGrada, nazivUlice, postanski, broj), new DateTime(godina, mjesec, dan), brojLicneKarte, jmbg);
-            g.glasaj(s);
-            Assert.AreEqual(1, s.getBrojGlasova());
+            Boolean postoji = false;
+            foreach(Stranka g in registar.getStranke())
+            {
+                if(g.getIdentifikacionaSkracenica().Equals(ulaz))
+                {
+                    postoji = true;
+                    break;
+                }
+            }
+            Assert.IsTrue(postoji);
         }
 
     }
