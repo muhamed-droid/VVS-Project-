@@ -159,12 +159,12 @@ namespace VVSZadaceTests
 
         [TestMethod]
         [DynamicData("PodaciXML")]
-        public void TestTajnaSifraXML(String ulaz)
+        public void TestPodaciXML(String ulaz)
         {
             Boolean postoji = false;
-            foreach(Stranka g in registar.getStranke())
+            foreach(Stranka s in registar.getStranke())
             {
-                if(g.getIdentifikacionaSkracenica().Equals(ulaz))
+                if(s.getIdentifikacionaSkracenica().Equals(ulaz))
                 {
                     postoji = true;
                     break;
