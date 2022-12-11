@@ -105,5 +105,13 @@ namespace VVSZadace
                 k.dodajGlas(this);
             }
         }
+
+        public bool VjerodostojnostGlasaca(IProvjera sigurnosnaProvjera)
+        {
+            if (sigurnosnaProvjera.DaLiJeVecGlasao(jedinstveniIdentifikacioniKod))
+                throw new Exception("Glasač je već izvršio glasanje!");
+            return true;
+        }
+
     }
 }
