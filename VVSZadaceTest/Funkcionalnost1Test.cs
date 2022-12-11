@@ -205,10 +205,10 @@ namespace VVSZadaceTests
             Assert.AreEqual(g.getJedinstveniIdentifikacioniKod(), identifikacioniKod);
         }
 
-        /*public static IEnumerable<object[]> UčitajGlasaceXML()
+        public static IEnumerable<object[]> UčitajGlasaceXML()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load("C:\\VVS\\VVSZadaceTest\\Glasaci.xml");
+            doc.Load("Glasaci.xml");
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 List<string> elements = new List<string>();
@@ -236,6 +236,6 @@ namespace VVSZadaceTests
             Glasac g = new Glasac(ime, prezime, new Adresa(grad, ulica, postanskiBroj, broj), rodjenje, brojLicneKarte, jmbg);
             Assert.AreEqual(g.getJedinstveniIdentifikacioniKod(), identifikacioniKod);
         }
-        */
+       
     }
 }

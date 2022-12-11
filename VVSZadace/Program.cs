@@ -240,8 +240,8 @@ namespace VVSZadace
                             Console.WriteLine("2. Pregled svih glasaca");
                             Console.WriteLine("3. Pregled statistike");
                             Console.WriteLine("4. Pregled rezultata rukovodstva stranke");
-                            Console.WriteLine("5. Pregled rezultata rukovodstva svih stranaka");
-                            Console.WriteLine("5. Pregled rezultata rukovodstva svih stranaka");
+      
+                          //  Console.WriteLine("5. Pregled rezultata rukovodstva svih stranaka");
                             int inputAdmina = Convert.ToInt32(Console.ReadLine());
 
                             switch (inputAdmina)
@@ -305,6 +305,7 @@ namespace VVSZadace
                                         Console.WriteLine("Odabrali ste nepostojeću opciju!");
                                     }
                                     break;
+                                //Funkcionalnost 4-Selma Kurtovic
                                 case 4:
                                     Console.WriteLine("Unesite identifikacionu skracenicu stranke");
                                     string inputStranke = Console.ReadLine().ToUpper();
@@ -313,17 +314,18 @@ namespace VVSZadace
                                         Console.WriteLine("Ta stranka ne postoji!");
                                     else
                                     {
-                                        Console.WriteLine("Ukupan broj glasova rukovodstva stranke" + stranka.getUkupanBrojGlasovaRukovodstva());
-
+                                        Console.WriteLine("Ukupan broj glasova rukovodstva stranke: " + stranka.getUkupanBrojGlasovaRukovodstva());
+                                        Console.Write("Kandidati: ");
+                                        //   stranka.ispisiRukovodstvo();
                                         foreach (var clan in stranka.getClanoviRukovodstvaKandidovani())
-                                            Console.WriteLine(clan.getIme());
+                                            Console.Write("Identifikacioni broj: " + clan.getJedinstveniIdentifikacioniKod() + ", ");
 
                                     }
 
 
                                     break;
-                                //Funkcionalnost 4-Selma Kurtovic
-                                case 5:
+                            
+                               /* case 5:
                                     var ukupno = r.getUkupanBrojGlasovaRukvodstvaStranaka();
 
                                     Console.WriteLine("Ukupan broj glasova: " + ukupno);
@@ -337,7 +339,7 @@ namespace VVSZadace
                                     Console.Write("\n");
 
 
-                                    break;
+                                    break;*/
                             }
                             break;
                         }
