@@ -9,6 +9,7 @@ namespace VVSZadace
         private List<Glasac> glasaci;
         private int brojGlasova;
         Boolean mandat = false;
+        //Zejneb Kost
         private String historijaStranaka = "";
 
         //po defaultu se kreira nezavisni kandidat u kojem je stranka null
@@ -22,8 +23,9 @@ namespace VVSZadace
         public void pridruziStranci(Stranka stranka)
         {
             this.stranka = stranka;
-            if (historijaStranaka == "") historijaStranaka = "Kandidat je bio član stranke " + stranka + " od " + DateTime.Now.ToString("d/M/yyyy");
-            else historijaStranaka += " do " + DateTime.Now.ToString("d/M/yyyy") + ", član stranke " + stranka + "od " + DateTime.Now.ToString("d/M/yyyy");
+            //Zejneb Kost
+            if (historijaStranaka == "") historijaStranaka = "Kandidat je bio član stranke " + stranka.getPuniNaziv() + " od " + DateTime.Now.ToString("d/M/yyyy");
+            else historijaStranaka += " do " + DateTime.Now.ToString("d/M/yyyy") + ", član stranke " + stranka.getPuniNaziv() + "od " + DateTime.Now.ToString("d/M/yyyy");
         }
 
         public void ispisiHistorijuStranaka()
@@ -74,6 +76,12 @@ namespace VVSZadace
         public List<Glasac> getGlasaci()
         {
             return glasaci;
+        }
+
+        //Zejneb Kost
+        public String getHistorijaStranaka()
+        {
+            return historijaStranaka;
         }
     }
 }

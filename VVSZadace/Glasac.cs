@@ -15,6 +15,7 @@ namespace VVSZadace
         private String jedinstveniIdentifikacioniKod;
         private bool datGlas = false;
 
+        //Funkcionalnost br1.  - Adna Mehanovic
         public Glasac(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, string jmbg)
         {
             this.setIme(ime);
