@@ -67,6 +67,7 @@ namespace VVSZadaca1
         public void glasaj(Stranka stranka)
         {
             stranka.dodajGlas(this);
+            
         }
 
         public bool daLiJeListicValidan(List<Kandidat> kandidati)

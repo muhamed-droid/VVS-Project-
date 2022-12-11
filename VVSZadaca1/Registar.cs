@@ -29,6 +29,7 @@ namespace VVSZadaca1
         }
         public void dodajKandidata(Kandidat k)
         {
+            if(k.getStranka()==null)
             nezavisniKandidati.Add(k);
         }
         public void dodajStranku(Stranka s)

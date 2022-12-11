@@ -21,6 +21,7 @@ namespace VVSZadaca1
         public void pridruziStranci(Stranka stranka)
         {
             this.stranka = stranka;
+            this.stranka.dodajKandidata(this);
         }
 
         public void dodajGlas(Glasac glasac)
