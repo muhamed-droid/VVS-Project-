@@ -15,6 +15,10 @@ namespace VVSZadace
             this.postanskiBroj = postanskiBroj;
             this.broj = broj;
         }
+        public Adresa()
+        {
+
+        }
 
         public override string ToString()
         {
