@@ -119,27 +119,30 @@ namespace VVSZadaceTests
             Assert.IsTrue(registar.dajKandidateKojiSuOsvojiliMandat().Contains(kandidat2));
         }
 
-        /*static IEnumerable<object[]> Registar1
+        static IEnumerable<object[]> Registar1
         {
             get
             {
                 return new[]
                 {
-                new object[] { "", "Prezime", new Adresa("Minken", "Bavaria", 71300,"5") ,DateTime.Parse("01/01/1996"), "0101996170001", "M", "ZD-01" },
-                new object[] { "Ime", "", DateTime.Parse("01/01/1996"), "0101996170001", "M", "ZD-01" },
+                new object[] { "Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T214", "1211992111111", new Stranka("SDA", "Stranka demokratske akcije")},
+                /*new object[] { "Ime", "", DateTime.Parse("01/01/1996"), "0101996170001", "M", "ZD-01" },
                 new object[] { "Ime", "Prezime", DateTime.Now.AddDays(1), "0101996170001", "M", "ZD-01" },
                 new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "5001996170001", "M", "ZD-01" },
                 new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "0101996170001", "Muško", "ZD-01" },
-                new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "0101996170001", "M", "01" }
+                new object[] { "Ime", "Prezime", DateTime.Parse("01/01/1996"), "0101996170001", "M", "01" } */
                 };
             }
         }
 
         [TestMethod]
         [DynamicData ("Registar1")]
-        public void TestKonstruktoraPacijenta(string ime, string prezime, DateTime rođenje, string matični, string spol, string knjižica)
+        public void InlineTest(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, string jmbg, Stranka s)
         {
-            
-        } */
+            Registar r3 = new Registar();
+            Glasac g = new Glasac(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg);
+            g.glasaj(s);
+            Assert.AreEqual(1, s.getBrojGlasova());
+        } 
     }
 }
