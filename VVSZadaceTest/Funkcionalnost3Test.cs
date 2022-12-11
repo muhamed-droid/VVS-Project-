@@ -123,7 +123,7 @@ namespace VVSZadaceTests
             {
                 return new[]
                 {
-                new object[] { "Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T214", "1211992111111", new Stranka("SDA", "Stranka demokratske akcije")},
+                new object[] { "Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T214", "1511992111111", new Stranka("SDA", "Stranka demokratske akcije")},
                 };
             }
         }
