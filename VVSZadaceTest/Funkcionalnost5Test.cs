@@ -112,6 +112,7 @@ namespace VVSZadaceTests
             Assert.IsFalse(k1.getGlasaci().Contains(glasac));
         }
 
+
         static IEnumerable<object[]> TajneSifre
         {
             get
