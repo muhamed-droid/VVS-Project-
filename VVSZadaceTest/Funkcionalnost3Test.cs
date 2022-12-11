@@ -23,7 +23,7 @@ namespace VVSZadaceTests
             registar = new Registar();
             s1 = new Stranka("SDP", "Socijaldemokratska partija");
             s2 = new Stranka("SPK", "Samo pošteno komunistički");
-            registar.dodajGlasaca(new Glasac("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T214", "1211992111111"));
+            registar.dodajGlasaca(new Glasac("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T214", "1511992111111"));
             registar.dodajGlasaca(new Glasac("Sven", "Milinkovic-Savic", new Adresa("Rim", "ulica1", 71000, "123"), new DateTime(2000, 5, 21), "131T121", "2105000222222"));
             registar.dodajGlasaca(new Glasac("Edin", "Dzeko", new Adresa("Sarajevo", "ulica2", 71020, "231"), new DateTime(2000, 12, 31), "131T231", "3112000333333"));
             registar.dodajGlasaca(new Glasac("Robert", "Prosinecki", new Adresa("Zagreb", "ulica3", 71120, "132"), new DateTime(2000, 10, 10), "131T212", "1010000444444"));
@@ -45,7 +45,7 @@ namespace VVSZadaceTests
             glasac1.glasaj(s1);
             kandidat1.dodajGlas(glasac1);
             kandidat1.dodajGlas(glasac2);
-            kandidat1.dodajGlas(new Glasac("Mensur", "Mujdza", new Adresa("Sarajevo", "Hasima Spahica", 71000, "bb"), new DateTime(1999, 1, 23), "23T657", "2301999170035"));
+            kandidat1.dodajGlas(new Glasac("Mensur", "Mujdza", new Adresa("Sarajevo", "Hasima Spahica", 71000, "bb"), new DateTime(1999, 1, 23), "231T657", "2301999170035"));
             registar.dodajStranku(s1);
             kandidat2.pridruziStranci(s1);
             s1.dodajGlas(glasac1);
@@ -54,11 +54,11 @@ namespace VVSZadaceTests
             kandidat2.dodajGlas(glasac2);
             registar.dodajGlas();
             registar.dodajGlas();
-            s1.dodajGlas(new Glasac("kk", "jjiajas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "211T61", "210199921237"));
-            s1.dodajGlas(new Glasac("ki", "jjiajas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "221T98", "210199921290"));
-            s1.dodajGlas(new Glasac("km", "jjijajas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "281T63", "210199921276"));
-            s1.dodajGlas(new Glasac("kl", "jjlijas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "241T81", "210199921256"));
-            s1.dodajGlas(new Glasac("ko", "jjilijas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "281T62", "210199921209"));
+            s1.dodajGlas(new Glasac("kk", "jjiajas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "211T611", "2101999212317"));
+            s1.dodajGlas(new Glasac("ki", "jjiajas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "221T918", "2101999212190"));
+            s1.dodajGlas(new Glasac("km", "jjijajas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "281T613", "2101999212176"));
+            s1.dodajGlas(new Glasac("kl", "jjlijas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "241T811", "2101999212156"));
+            s1.dodajGlas(new Glasac("ko", "jjilijas", new Adresa("iqiqi", "jksja", 18293, "bb"), new DateTime(1999, 1, 21), "281T612", "2101999211209"));
         }
 
         [TestMethod]
