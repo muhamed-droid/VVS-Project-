@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 namespace VVSZadaceTests
 {
     [TestClass()]
-    public class RegistarTest
+    public class Funkcionalnost2Test
     {
+        //Muhamed Masnopita
         static Registar r;
         static Glasac g1, g2;
         static Kandidat k1, k2;
