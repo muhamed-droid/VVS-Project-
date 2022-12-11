@@ -9,7 +9,7 @@ namespace VVSZadace
         {
             Glasac glasac1 = new Glasac("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T214", "1511992111111");
             Glasac glasac2 = new Glasac("Adna", "Mehanovic", new Adresa("Vogosca", "ulica1", 71000, "bb"), new DateTime(2000, 5, 21), "131T219", "2105000222222");
-            Glasac glasac3 = new Glasac("Esma", "Zejnilovic", new Adresa("Brcko", "ulica2", 71365, "bb"), new DateTime(2007, 11, 15), "611T182", "1511007333333");
+            Glasac glasac3 = new Glasac("Esma", "Zejnilovic", new Adresa("Brcko", "ulica2", 71365, "bb"), new DateTime(2001, 11, 15), "611T182", "1511001333333");
             Glasac glasac4 = new Glasac("Selma", "Kurtovic", new Adresa("Sarajevo", "ulica3", 71000, "bb"), new DateTime(2002, 12, 4), "310T225", "0412002444444");
             Glasac glasac5 = new Glasac("Zejneb", "Kost", new Adresa("Sarajevo", "ulica4", 71000, "bb"), new DateTime(2000, 1, 31), "200T122", "3101000555555");
             r.dodajGlasaca(glasac1);
