@@ -1,14 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using VVSZadaca1;
 using System;
 using System.Collections.Generic;
-using VVSZadaca1;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-
-namespace TestProject
+namespace VVSZadaca1Tests
 {
-    [TestClass]
-    public class TestRegistar
+    [TestClass()]
+    public class RegistarTest
     {
         //Muhamed Masnopita
         static Registar r;
@@ -17,7 +18,7 @@ namespace TestProject
         static Stranka s1, s2;
 
         [ClassInitialize()]
-        public void Initialize(TestContext context)
+        public static void Initialize(TestContext context)
         {
             r = new Registar();
             r.dodajGlasaca(new Glasac("Muhamed", "Masnopita", new Adresa("Iljas", "Ljesevo", 71380, "252"), new DateTime(1992, 11, 15), "165T24", 3009000170036));
@@ -29,16 +30,15 @@ namespace TestProject
             s2 = new Stranka("SPK", "Samo pošteno komunistički");
         }
 
-        [TestInitialize]
+        [TestInitialize()]
         public void InicijalizacijaPrijeSvakogTesta()
         {
             g1 = new Glasac("Marcelo", "Brozovic", new Adresa("Zadar", "Olivera Dragojevica", 79182, "333"), new DateTime(1992, 1, 15), "113T24", 1501992170029);
-            g2 = new Glasac("Dominik", "Livakovic", new Adresa("Gol", "Stativa", 71234, "1"), new DateTime(1995, 13, 11), "12T617", 1113995170005);
+            g2 = new Glasac("Dominik", "Livakovic", new Adresa("Gol", "Stativa", 71234, "1"), new DateTime(1995, 12, 11), "12T617", 1113995170005);
             k1 = new Kandidat("Marija", "Kiri", new Adresa("Poljska", "Warsava", 71224, "321"), new DateTime(1989, 10, 10), "12T657", 1010989232312);
             k1.pridruziStranci(s1);
             k2 = new Kandidat("Marko", "Livaja", new Adresa("Split", "Poljud", 74928, "10"), new DateTime(1992, 10, 10), "13T157", 1010992232312);
         }
-
 
         [TestMethod]
         public void TestMetodeGetBrojGlasaca()
@@ -142,6 +142,5 @@ namespace TestProject
             Assert.IsTrue(r.dajKandidateKojiSuOsvojiliMandat().Contains(k1));
             Assert.IsTrue(r.dajKandidateKojiSuOsvojiliMandat().Contains(k2));
         }
-
     }
 }
