@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace VVSZadaceTests
 {
     [TestClass()]
-    public class Funkcionalnost2Test
+    public class Funkcionalnost3Test
     {
         //Muhamed Masnopita
         static Registar r;
