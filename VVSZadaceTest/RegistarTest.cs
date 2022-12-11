@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VVSZadace;
+﻿using VVSZadaca1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,11 +41,11 @@ namespace VVSZadaceTests
         [TestMethod]
         public void TestMetodeGetBrojGlasaca()
         {
-            Assert.AreEqual(5, r.getBrojGlasaca());
-            r.dodajGlasaca(g1);
-            Assert.AreEqual(6, r.getBrojGlasaca());
-            r.dodajGlasaca(g2);
-            Assert.AreEqual(7, r.getBrojGlasaca());
+            Assert.AreEqual(0, r.getBrojGlasaca());
+            r.dodajGlas();
+            Assert.AreEqual(1, r.getBrojGlasaca());
+            r.dodajGlas();
+            Assert.AreEqual(2, r.getBrojGlasaca());
         }
 
         [TestMethod]
@@ -73,7 +72,7 @@ namespace VVSZadaceTests
         {
             Assert.AreEqual(0, r.getStranke().Count);
             r.dodajStranku(s1);
-            Assert.AreEqual(0, r.getStranke().Count);
+            Assert.AreEqual(1, r.getStranke().Count);
             Assert.IsFalse(r.getStranke().Contains(s2));
             Assert.IsTrue(r.getStranke().Contains(s1));
             r.dodajStranku(s2);
@@ -91,25 +90,24 @@ namespace VVSZadaceTests
         public void TestMetodeIspisRezultata2()
         {
             r.dodajStranku(s1);
-            Assert.AreEqual("Izbori još nisu počeli", r.ispisRezultata());
             k2.pridruziStranci(s1);
             s1.dodajGlas(g1);
             s1.dodajGlas(g2);
-            k1.dodajGlas(g1);
-            k1.dodajGlas(g2);
-            Assert.AreEqual("Socijaldemokratska partija:\nMarija Kiri broj glasova: 2 procenat osvojenih glasova: 100%\n\n", r.ispisRezultata());
+            k2.dodajGlas(g1);
+            k2.dodajGlas(g2);
+            r.dodajGlas();
+            r.dodajGlas();
+            Assert.AreEqual("Socijaldemokratska partija:\nMarko Livaja broj glasova: 2 procenat osvojenih glasova: 100%\n\n", r.ispisRezultata());
         }
 
         [TestMethod]
         public void TestMetodeDajIzlaznost()
         {
-            r.dodajStranku(s1);
             Assert.AreEqual(0, r.dajIzlaznost());
-            Glasac g3 = new Glasac("Lovro", "Majer", new Adresa("Travnik", "Bila", 71382, "bb"), new DateTime(1989, 2, 25), "17T523", 2502989170053);
-            g1.glasaj(s1);
-            Assert.AreEqual(0.125, r.dajIzlaznost());
-            g3.glasaj(s1);
-            Assert.AreEqual(0.25, r.dajIzlaznost());
+            r.dodajGlas();
+            Assert.AreEqual(0.2, r.dajIzlaznost());
+            r.dodajGlas();
+            Assert.AreEqual(0.4, r.dajIzlaznost());
         }
 
         [TestMethod]
