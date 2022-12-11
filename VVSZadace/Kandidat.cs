@@ -9,6 +9,7 @@ namespace VVSZadace
         private List<Glasac> glasaci;
         private int brojGlasova;
         Boolean mandat = false;
+        private String historijaStranaka = "";
 
         //po defaultu se kreira nezavisni kandidat u kojem je stranka null
         public Kandidat(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, string jmbg) : base(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg)
@@ -21,8 +22,15 @@ namespace VVSZadace
         public void pridruziStranci(Stranka stranka)
         {
             this.stranka = stranka;
-            this.stranka.dodajKandidata(this);
+            if (historijaStranaka == "") historijaStranaka = "Kandidat je bio član stranke " + stranka + " od " + DateTime.Now.ToString("d/M/yyyy");
+            else historijaStranaka += " do " + DateTime.Now.ToString("d/M/yyyy") + ", član stranke " + stranka + "od " + DateTime.Now.ToString("d/M/yyyy");
         }
+
+        public void ispisiHistorijuStranaka()
+        {
+            Console.WriteLine(historijaStranaka);
+        }
+
 
         public void dodajGlas(Glasac glasac)
         {
