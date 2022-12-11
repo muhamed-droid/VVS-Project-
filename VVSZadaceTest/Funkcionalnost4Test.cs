@@ -3,6 +3,10 @@ using VVSZadace;
 using System;
 using System.Collections.Generic;
 using System.Xml;
+using System.IO;
+using CsvHelper;
+using System.Linq;
+using System.Globalization;
 
 //Selma Kurtovic-funkcionalnost 4-metode u klasi Stranka+main(nije testiran)
 
@@ -123,7 +127,42 @@ namespace VVSZadaceTests
 
 
 
+        public static IEnumerable<object[]> UčitajPodatkeCSV()
+        {
+            using (var reader = new StreamReader("Kandidati.csv"))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var rows = csv.GetRecords<dynamic>();
+                foreach (var row in rows)
+                {
+                    var values = ((IDictionary<String, Object>)row).Values;
+                    var elements = values.Select(elem => elem.ToString()).ToList();
+                    yield return new object[] { elements[0], elements[1],
+DateTime.Parse(elements[2]), elements[3], elements[4], elements[5] };
+                }
+            }
+        }
 
+        static IEnumerable<object[]> KandidatiCSV
+        {
+            get
+            {
+                return UčitajPodatkeCSV();
+            }
+        }
+        [TestMethod]
+        [DynamicData("KandidatiCSV")]
+        public void TestRukovodstvo2(string ime, string prezime, DateTime datum, string licna, string id, string stranka_naziv, string stranka,
+           string ulica, string grad, int broj, string drzava)
+        {
+
+            Kandidat k = new Kandidat(ime, prezime, new Adresa(ulica, grad, broj, drzava), datum, licna, id);
+            Stranka s = new Stranka(stranka, stranka_naziv);
+            k.pridruziStranci(s);
+            //s.dodajKandidata(k);
+            s.dodajClanaRukovodstva(k);
+            Assert.AreEqual(s.getClanoviRukovodstva().Count, 1);
+        }
 
 
 
