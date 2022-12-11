@@ -3,7 +3,7 @@ using VVSZadace;
 using System;
 using System.Collections.Generic;
 using System.Xml;
-
+using Microsoft.VisualBasic;
 
 namespace VVSZadaceTests
 {
@@ -159,10 +159,12 @@ namespace VVSZadaceTests
 
         [TestMethod]
         [DynamicData("PodaciXML")]
-        public void TestTajnaSifraXML(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, string jmbg, Stranka s)
+        public void TestTajnaSifraXML(string ime, string prezime, String nazivGrada, String nazivUlice, int postanski, String broj, 
+            int godina, int mjesec, int dan, string brojLicneKarte, string jmbg, string skracenicaStranke, string nazivStranke)
         {
+            Stranka s = new Stranka(skracenicaStranke, nazivStranke);
             Registar r3 = new Registar();
-            Glasac g = new Glasac(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg);
+            Glasac g = new Glasac(ime, prezime, new Adresa(nazivGrada, nazivUlice, postanski, broj), new DateTime(godina, mjesec, dan), brojLicneKarte, jmbg);
             g.glasaj(s);
             Assert.AreEqual(1, s.getBrojGlasova());
         }
