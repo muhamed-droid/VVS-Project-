@@ -1,15 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Glasaci>
 	<Glasac>
-		<Ime>Esma</Ime>
-		<Prezime>Zejnilovic</Prezime>
+		<Ime>Selma</Ime>
+		<Prezime>Kurtovic</Prezime>
+		<Grad>Sarajevo</Grad>
+		<Ulica>Ulica2</Ulica>
+		<PostanskiBroj>71000</PostanskiBroj>
+		<Broj>bb</Broj>
+		<Rodjenje>2001/10/12</Rodjenje>
+		<BrojLicneKarte>222T222</BrojLicneKarte>
+		<JMBG>1210001222222</JMBG>
+		<IdentifikacioniKod>SeKuSa12100122</IdentifikacioniKod>
+	</Glasac>
+	<Glasac>
+		<Ime>Muhamed</Ime>
+		<Prezime>Masnopita</Prezime>
 		<Grad>Sarajevo</Grad>
 		<Ulica>Ulica1</Ulica>
 		<PostanskiBroj>71000</PostanskiBroj>
 		<Broj>bb</Broj>
-		<Rodjenje>01/01/2000</Rodjenje>
+		<Rodjenje>2000/01/02</Rodjenje>
 		<BrojLicneKarte>111T111</BrojLicneKarte>
-		<JMBG>0101000111111</JMBG>
-		<IdentifikacioniKod>EsZeSa01010011</IdentifikacioniKod>
+		<JMBG>0201000111111</JMBG>
+		<IdentifikacioniKod>MuMaSa02010011</IdentifikacioniKod>
 	</Glasac>
 </Glasaci>

@@ -25,6 +25,9 @@
     <None Update="Kandidati.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Podaci.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TajneSifre.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
