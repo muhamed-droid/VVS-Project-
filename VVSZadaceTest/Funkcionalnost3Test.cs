@@ -7,6 +7,7 @@ using Microsoft.VisualBasic;
 
 namespace VVSZadaceTests
 {
+    //Muhamed Masnopita
     [TestClass()]
     public class Funkcionalnost3Test
     {
