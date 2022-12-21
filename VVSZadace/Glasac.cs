@@ -136,7 +136,6 @@ namespace VVSZadace
 
         public void setJmbg(string jmbg)
         {
-            
             if (jmbg.Length != 13)
                 throw new LicneInformacijeOGlasacuException("Matični broj se mora sastojati od 13 brojeva!");
 
@@ -145,8 +144,7 @@ namespace VVSZadace
                  jmbg.Substring(0, 2) != getDatumRodjenja().ToString("dd") ||
                  jmbg.Substring(2, 2) != getDatumRodjenja().ToString("MM") ||
                  jmbg.Substring(4, 3) != godina.Substring(godina.Length > 3 ? godina.Length - 3 : 0))
-                throw new LicneInformacijeOGlasacuException("Nije ispravan format!" + 
-                    "(" + jmbg.Substring(0, 2) + " - " + getDatumRodjenja().ToString("dd") + ")");
+                throw new LicneInformacijeOGlasacuException("Nije ispravan format!");
             
             this.jmbg = jmbg;
         }
