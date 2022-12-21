@@ -143,7 +143,7 @@ namespace VVSZadace
             if (!Regex.IsMatch(jmbg.ToString(), @"^[\d\s]+$") ||
                  jmbg.Substring(0, 2) != getDatumRodjenja().ToString("dd") ||
                  jmbg.Substring(2, 2) != getDatumRodjenja().ToString("MM") ||
-                 jmbg.Substring(4, 3) != godina.Substring(godina.Length > 3 ? godina.Length - 3 : 0))
+                 jmbg.Substring(4, 3) != godina.Substring(1))
                 throw new LicneInformacijeOGlasacuException("Nije ispravan format!");
             
             this.jmbg = jmbg;
