@@ -109,7 +109,8 @@ namespace VVSZadace
             List<Kandidat> kandidatiKojiSuOsvojiliMandat = new List<Kandidat>();
             foreach (Kandidat k in this.getNezavisnikandidati())
             {
-                if (k.getBrojGlasova() >= 0.02 * this.getBrojGlasaca() && this.getBrojGlasaca() > 0)
+                bool uslovZaOsvojenMandatNezavisnogKandidata = k.getBrojGlasova() >= 0.02 * this.getBrojGlasaca() && this.getBrojGlasaca() > 0;
+                if (uslovZaOsvojenMandatNezavisnogKandidata)
                 {
                     kandidatiKojiSuOsvojiliMandat.Add(k);
                 }
@@ -119,7 +120,8 @@ namespace VVSZadace
             {
                 foreach (Kandidat k in s.getKandidati())
                 {
-                    if (k.getBrojGlasova() >= 0.2 * s.getBrojGlasova() && this.getBrojGlasaca() > 0 && k.getBrojGlasova() > 0)
+                    bool uslovZaOsvojenMandatKandidataStranke = k.getBrojGlasova() >= 0.2 * s.getBrojGlasova() && this.getBrojGlasaca() > 0 && k.getBrojGlasova() > 0;
+                    if (uslovZaOsvojenMandatKandidataStranke)
                     {
                         kandidatiKojiSuOsvojiliMandat.Add(k);
                     }
