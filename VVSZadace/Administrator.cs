@@ -23,7 +23,8 @@ namespace VVSZadace
         public string provjeraTajneSifre(string sifra)
         {
             brojac--;
-            if (sifra.ToUpper() != "VVS20222023")
+            String tajnaSifra = "VVS20222023";
+            if (!sifra.ToUpper().Equals(tajnaSifra)
             {
                 if (brojac == 0)
                 {
