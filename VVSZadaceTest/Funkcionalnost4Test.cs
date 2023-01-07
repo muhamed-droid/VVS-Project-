@@ -124,9 +124,6 @@ namespace VVSZadaceTests
             Assert.AreEqual(s.getClanoviRukovodstva().Count, 1);
         }
 
-
-
-
         public static IEnumerable<object[]> UčitajPodatkeCSV()
         {
             using (var reader = new StreamReader("Kandidati.csv"))
@@ -137,8 +134,10 @@ namespace VVSZadaceTests
                 {
                     var values = ((IDictionary<String, Object>)row).Values;
                     var elements = values.Select(elem => elem.ToString()).ToList();
-                    yield return new object[] { elements[0], elements[1],
-DateTime.Parse(elements[2]), elements[3], elements[4], elements[5] };
+                    yield return new object[] { elements[0], elements[1], elements[2], elements[3],
+                        Convert.ToInt32(elements[4]), elements[5], DateTime.Parse(elements[6]), 
+                        elements[7],elements[8], elements[9], elements[10]
+                    };
                 }
             }
         }
@@ -150,14 +149,14 @@ DateTime.Parse(elements[2]), elements[3], elements[4], elements[5] };
                 return UčitajPodatkeCSV();
             }
         }
+
         [TestMethod]
         [DynamicData("KandidatiCSV")]
-        public void TestRukovodstvo2(string ime, string prezime, DateTime datum, string licna, string id, string stranka_naziv, string stranka,
-           string ulica, string grad, int broj, string drzava)
+        public void TestRukovodstvo2(string ime, string prezime, string grad, string ulica, int postanskiBroj, string broj,
+            DateTime datumRodjenja, string licna, string jmbg, string strankaNaziv, string stranka)
         {
-
-            Kandidat k = new Kandidat(ime, prezime, new Adresa(ulica, grad, broj, drzava), datum, licna, id);
-            Stranka s = new Stranka(stranka, stranka_naziv);
+            Kandidat k = new Kandidat(ime, prezime, new Adresa(grad, ulica, postanskiBroj, broj), datumRodjenja, licna, jmbg);
+            Stranka s = new Stranka(stranka, strankaNaziv);
             k.pridruziStranci(s);
             //s.dodajKandidata(k);
             s.dodajClanaRukovodstva(k);

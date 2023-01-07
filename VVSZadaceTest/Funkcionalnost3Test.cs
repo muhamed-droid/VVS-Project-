@@ -7,6 +7,7 @@ using Microsoft.VisualBasic;
 
 namespace VVSZadaceTests
 {
+    //Muhamed Masnopita
     [TestClass()]
     public class Funkcionalnost3Test
     {
@@ -142,7 +143,7 @@ namespace VVSZadaceTests
         public static IEnumerable<object[]> UcitajPodatkeXML()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load("C:\\Users\\masno\\Source\\Repos\\VVSZadaca1\\VVSZadaceTest\\Podaci.xml");
+            doc.Load("Podaci.xml");
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 yield return new object[] { node.InnerText };

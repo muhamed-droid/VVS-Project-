@@ -189,19 +189,20 @@ namespace VVSZadaceTests
             {
                 return new[]
                 {
-                    new object[] { "Esma", "Zejnilovic", new Adresa("Sarajevo", "Ulica1", 71000, "bb"), new DateTime(1999, 1, 2), "111T111", "0201999111111", "EsZeSa02019911"},
-                    new object[] { "Muhamed", "Masnopita", new Adresa("Sarajevo", "Ulica2", 71000, "bb"), new DateTime(2000, 11, 21), "222M222", "2111000222222", "MuMaSa21110022"},
-                    new object[] { "Selma", "Kurtovic", new Adresa("Sarajevo", "Ulica3", 71000, "bb"), new DateTime(2001, 2, 18), "333M333", "1802001333333", "SeKuSa18020133"},
-                    new object[] { "Zejneb", "Kost", new Adresa("Sarajevo", "Ulica4", 71000, "bb"), new DateTime(2000, 8, 8), "444T444", "0808000444444", "ZeKoSa08080044"},
+                    new object[] { "Esma", "Zejnilovic", "Sarajevo", "Ulica1", 71000, "bb", new DateTime(1999, 1, 2), "111T111", "0201999111111", "EsZeSa02019911"},
+                    new object[] { "Muhamed", "Masnopita", "Sarajevo", "Ulica2", 71000, "bb", new DateTime(2000, 11, 21), "222M222", "2111000222222", "MuMaSa21110022"},
+                    new object[] { "Selma", "Kurtovic", "Sarajevo", "Ulica3", 71000, "bb", new DateTime(2001, 2, 18), "333M333", "1802001333333", "SeKuSa18020133"},
+                    new object[] { "Zejneb", "Kost", "Sarajevo", "Ulica4", 71000, "bb", new DateTime(2000, 8, 8), "444T444", "0808000444444", "ZeKoSa08080044"},
                 };
             }
         }
 
         [TestMethod]
         [DynamicData("LicneInformacije")]
-        public void TestLicneInformacije(string ime, string prezime, Adresa adresa, DateTime datumRodjenja, string brojLicneKarte, string jmbg, string identifikacioniKod )
+        public void TestLicneInformacije(string ime, string prezime, string grad, string ulica, int postanskiBroj, string broj, 
+            DateTime datumRodjenja, string brojLicneKarte, string jmbg, string identifikacioniKod )
         {
-            Glasac g = new Glasac(ime, prezime, adresa, datumRodjenja, brojLicneKarte, jmbg);
+            Glasac g = new Glasac(ime, prezime, new Adresa(grad, ulica, postanskiBroj, broj), datumRodjenja, brojLicneKarte, jmbg);
             Assert.AreEqual(g.getJedinstveniIdentifikacioniKod(), identifikacioniKod);
         }
 
@@ -216,7 +217,8 @@ namespace VVSZadaceTests
                 {
                     elements.Add(innerNode.InnerText);
                 }
-                yield return new object[] { elements[0], elements[1], elements[2], elements[3], Convert.ToInt32(elements[4]), elements[5],
+                yield return new object[] { elements[0], elements[1], elements[2], elements[3], 
+                    Convert.ToInt32(elements[4]), elements[5],
                     DateTime.Parse(elements[6]), elements[7], elements[8], elements[9] };
             }
         }
@@ -228,6 +230,7 @@ namespace VVSZadaceTests
                 return UčitajGlasaceXML();
             }
         }
+
         [TestMethod]
         [DynamicData("GlasaciXML")]
         public void TestKonstruktoraPacijentaXML(string ime, string prezime, string grad, string ulica, int postanskiBroj, string broj,
