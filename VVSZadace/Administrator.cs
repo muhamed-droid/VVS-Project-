@@ -24,7 +24,7 @@ namespace VVSZadace
         {
             brojac--;
             String tajnaSifra = "VVS20222023";
-            if (!sifra.ToUpper().Equals(tajnaSifra)
+            if (!sifra.ToUpper().Equals(tajnaSifra))
             {
                 if (brojac == 0)
                 {
