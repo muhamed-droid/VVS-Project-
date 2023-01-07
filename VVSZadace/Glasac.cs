@@ -140,13 +140,10 @@ namespace VVSZadace
                 throw new LicneInformacijeOGlasacuException("Matični broj se mora sastojati od 13 brojeva!");
 
             string godina = getDatumRodjenja().Year.ToString();
-            bool ispravanFormatDatuma = jmbg.Substring(0, 2) == getDatumRodjenja().ToString("dd") &&
-                                        jmbg.Substring(2, 2) == getDatumRodjenja().ToString("MM") &&
-                                        jmbg.Substring(4, 3) == godina.Substring(1);
-
-            bool sadrziSamoBrojeve = Regex.IsMatch(jmbg.ToString(), @"^[\d\s]+$");
-
-            if (!sadrziSamoBrojeve || !ispravanFormatDatuma)
+            if (!Regex.IsMatch(jmbg.ToString(), @"^[\d\s]+$") || 
+                jmbg.Substring(0, 2) == getDatumRodjenja().ToString("dd") ||
+                jmbg.Substring(2, 2) == getDatumRodjenja().ToString("MM") ||
+                jmbg.Substring(4, 3) == godina.Substring(1))
                 throw new LicneInformacijeOGlasacuException("Nije ispravan format!");
             
             this.jmbg = jmbg;
