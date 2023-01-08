@@ -125,7 +125,8 @@ namespace VVSZadace
                 {
                     foreach (Kandidat k in s.getKandidati())
                     {
-                        bool cenzusUStranci = k.getBrojGlasova() >= 0.2 * s.getBrojGlasova();
+                        double limitZaCenzus= 0.2 * s.getBrojGlasova();
+                        bool cenzusUStranci = k.getBrojGlasova() >= limitZaCenzus;
                         bool imaGlasova = k.getBrojGlasova() > 0;
                         bool uslovZaOsvojenMandatKandidataStranke = cenzusUStranci && imaGlasova;
                         if (uslovZaOsvojenMandatKandidataStranke)
