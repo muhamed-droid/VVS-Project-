@@ -107,28 +107,31 @@ namespace VVSZadace
         public List<Kandidat> dajKandidateKojiSuOsvojiliMandat()
         {
             List<Kandidat> kandidatiKojiSuOsvojiliMandat = new List<Kandidat>();
-            foreach (Kandidat k in this.getNezavisnikandidati())
+            bool postojiOsobaKojaJeGlasala = this.getBrojGlasaca() >= 0;
+
+            if (postojiOsobaKojaJeGlasala)
             {
-                bool cenzusKaoNezavisniKandidat = k.getBrojGlasova() >= 0.02*this.getBrojGlasaca();
-                bool postojiOsobaKojaJeGlasala = this.getBrojGlasaca() >= 0;
-                bool uslovZaOsvojenMandatNezavisnogKandidata = cenzusKaoNezavisniKandidat && postojiOsobaKojaJeGlasala;
-                if (uslovZaOsvojenMandatNezavisnogKandidata)
+                foreach (Kandidat k in this.getNezavisnikandidati())
                 {
-                    kandidatiKojiSuOsvojiliMandat.Add(k);
-                }
-            }
-            List<Stranka> listaStranki = this.getStranke();
-            foreach (Stranka s in listaStranki)
-            {
-                foreach (Kandidat k in s.getKandidati())
-                {
-                    bool cenzusUStranci = k.getBrojGlasova() >= 0.2 * s.getBrojGlasova();
-                    bool imaGlasova = k.getBrojGlasova() > 0;
-                    bool postojiOsobaKojaJeGlasala = this.getBrojGlasaca() >= 0;
-                    bool uslovZaOsvojenMandatKandidataStranke = cenzusUStranci && postojiOsobaKojaJeGlasala && imaGlasova;
-                    if (uslovZaOsvojenMandatKandidataStranke)
+                    bool cenzusKaoNezavisniKandidat = k.getBrojGlasova() >= 0.02 * this.getBrojGlasaca();
+                    if (cenzusKaoNezavisniKandidat)
                     {
                         kandidatiKojiSuOsvojiliMandat.Add(k);
+                    }
+                }
+
+                List<Stranka> listaStranki = this.getStranke();
+                foreach (Stranka s in listaStranki)
+                {
+                    foreach (Kandidat k in s.getKandidati())
+                    {
+                        bool cenzusUStranci = k.getBrojGlasova() >= 0.2 * s.getBrojGlasova();
+                        bool imaGlasova = k.getBrojGlasova() > 0;
+                        bool uslovZaOsvojenMandatKandidataStranke = cenzusUStranci && imaGlasova;
+                        if (uslovZaOsvojenMandatKandidataStranke)
+                        {
+                            kandidatiKojiSuOsvojiliMandat.Add(k);
+                        }
                     }
                 }
             }
