@@ -115,6 +115,7 @@ namespace VVSZadace
 
         public void setDatumRodjenja(DateTime datumRodjenja)
         {
+            const int limit = 18;
             if (DateTime.Compare(datumRodjenja, DateTime.Now) > 0)
                 throw new LicneInformacijeOGlasacuException("Datum rođenja ne može biti u budućnosti!");
 
@@ -122,7 +123,7 @@ namespace VVSZadace
             if (DateTime.Now.DayOfYear < datumRodjenja.DayOfYear)
                 godine--;
 
-            if (godine < 18)
+            if (godine < limit)
                 throw new LicneInformacijeOGlasacuException("Glasač mora biti punoljetan!");
             
             this.datumRodjenja = datumRodjenja;
